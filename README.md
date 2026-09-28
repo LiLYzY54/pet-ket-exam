@@ -11,6 +11,6 @@ https://lilyzy54.github.io/pet-ket-exam/
 - 测试报告、导出答案、本机草稿
 
 ## 文件
-- index.html
-- pet-listening.mp3
-- ket-listening.mp3
+- index.html（主页面，题目图片已内嵌）
+- PET听力音频.mp3 / pet-listening.mp3
+- KET听力音频.mp3 / ket-listening.mp3

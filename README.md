@@ -1,16 +1,27 @@
 # PET / KET 在线模考
 
-纯前端剑桥 PET、KET 模考网页，浏览器直接打开即可。
+纯前端剑桥 PET (B1 Preliminary for Schools) 与 KET (A2 Key for Schools) 官方样题在线模考系统。
 
 ## 在线访问
-https://lilyzy54.github.io/pet-ket-exam/
+👉 **[https://lilyzy54.github.io/pet-ket-exam/](https://lilyzy54.github.io/pet-ket-exam/)**
 
-## 功能
-- 听力（每部分固定听 2 遍）+ 阅读自动评分
-- Cambridge Scale / CEFR 换算
-- 测试报告、导出答案、本机草稿
+## 核心设计与定位
+- **官方真题结构**：
+  - **PET**：听力 25 题、阅读 32 题（客观题共 57 题）；写作 2 篇与口语（线下任务）。
+  - **KET**：听力 25 题、阅读 30 题（客观题共 55 题）；Parts 6–7 写作与口语（线下任务）。
+- **客观题自动批改**：
+  - 听力、阅读在线答题，实时统计进度，自动换算 Cambridge English Scale 分数。
+- **主观题只读与线下完成**：
+  - 写作与口语仅在线展示官方样题题目与要求，学生在纸上或与教师面对面完成。
+  - 纯前端运行，绝无输入框、文件上传、录音麦克风或 AI/OCR 依赖，杜绝隐私风险。
+- **版本 2 阶段报告与 A4 打印**：
+  - 生成“待教师补充 · 客观题阶段报告”，严禁在缺失主观题时误导性生成综合总分。
+  - 预留标准双栏教师手填评估卡（原始分、量表分、各项分项维度评分与评语横线）。
+  - 针对 A4 打印优化，首页自适应完整呈现考生信息、客观题分项和手填卡。
 
-## 文件
-- index.html（主页面，题目图片已内嵌）
-- PET听力音频.mp3 / pet-listening.mp3
-- KET听力音频.mp3 / ket-listening.mp3
+## 项目结构
+- `index.html`：轻量入口结构
+- `style.css`：全站样式与 A4 打印规则
+- `data.js`：PET / KET 官方样题试题与换算表
+- `app.js`：考试引擎、音频控制、客观题批改与报告生成
+- `pet-listening.mp3` / `ket-listening.mp3`：官方听力音频资源

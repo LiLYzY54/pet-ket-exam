@@ -195,6 +195,34 @@ textarea{min-height:160px;resize:vertical;line-height:1.55}
 .exam-card h3{margin:8px 0 4px;font-size:1.125rem;font-weight:750;letter-spacing:-.02em}
 .exam-card p{margin:0;font-size:.875rem;color:var(--color-muted-fg);line-height:1.5}
 
+/* Paper Pick (Two-level selection) */
+.paper-section{margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px dashed var(--color-border)}
+.paper-section__title{margin:0 0 4px;font-size:1.0625rem;font-weight:750;letter-spacing:-.01em}
+.paper-pick{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-2)}
+@media(max-width:720px){.paper-pick{grid-template-columns:1fr}}
+.paper-card{
+  text-align:left;border:1.5px solid var(--color-border);border-radius:var(--radius);
+  padding:var(--space-4);cursor:pointer;background:var(--color-card);
+  min-height:44px;transition:transform var(--ease),border-color var(--ease),box-shadow var(--ease),background var(--ease);
+  position:relative;
+}
+.paper-card:active{transform:scale(.985)}
+.paper-card:hover{border-color:var(--color-accent);box-shadow:var(--shadow);background:#F0F9FF}
+.paper-card:focus-visible{box-shadow:0 0 0 3px rgba(3,105,161,.25)}
+.paper-card.active{border-color:var(--color-accent);background:#E0F2FE}
+.paper-card__header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.paper-card h4{margin:0;font-size:1.0625rem;font-weight:750;letter-spacing:-.01em;color:var(--color-foreground)}
+.paper-card .paper-src{font-size:.75rem;color:var(--color-muted-fg);font-weight:600}
+.paper-card .paper-desc{margin:6px 0 0;font-size:.8125rem;color:var(--color-foreground);line-height:1.45}
+.paper-card .paper-meta{margin:4px 0 0;font-size:.75rem;color:var(--color-muted-fg);line-height:1.4}
+.paper-card .paper-status{
+  display:inline-flex;align-items:center;gap:6px;margin-top:8px;
+  font-size:.75rem;font-weight:650;color:#0369a1;background:#fff;
+  border:1px solid #bae6fd;border-radius:6px;padding:3px 8px;
+}
+.paper-card.active .paper-status{background:#0369a1;color:#fff;border-color:#0369a1}
+.paper-empty-hint{grid-column:1/-1;padding:var(--space-4);text-align:center;color:var(--color-muted-fg);background:var(--color-muted);border-radius:var(--radius);font-size:.875rem}
+
 /* Authority showcase */
 .auth-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));

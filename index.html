@@ -84,6 +84,11 @@
         <h2>选择考试与填写信息</h2>
         <p class="lede">信息将写入客观题阶段报告。带“必填”标记的项目需要完成后才能开始。</p>
         <div class="exam-pick" id="examPick"></div>
+        <div class="paper-section" id="paperSection">
+          <h3 class="paper-section__title">选择试卷</h3>
+          <p class="quiet" id="paperSectionHint" style="margin:0 0 8px">请选择当前考试级别下的测试套卷。</p>
+          <div class="paper-pick" id="paperPick" role="radiogroup" aria-label="选择试卷"></div>
+        </div>
         <div class="grid2" style="margin-top:16px">
           <label class="field"><span>考生姓名 · 必填</span><input id="stuName" name="stuName" aria-describedby="nameHelp" autocomplete="name" placeholder="例如：王同学" required /><small id="nameHelp">用于本机报告展示，不会上传到服务器。</small></label>
           <label class="field"><span>报考地点</span><input id="stuPlace" name="stuPlace" value="BEIJING" /></label>
@@ -192,7 +197,9 @@
       </div>
     </div>
   </dialog>
-  <script src="data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="paper-catalog.js?v=3"></script>
+  <script src="data.js?v=3"></script>
+  <script src="test2-data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

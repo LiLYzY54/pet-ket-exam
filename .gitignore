@@ -1,0 +1,9 @@
+MULTI_PAPER_GEMINI_HANDOFF.md
+.DS_Store
+*.pdf
+page*.png
+screenshots/
+output_*.pdf
+PET-KET在线测试.html
+assets/*
+!assets/test2/

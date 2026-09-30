@@ -5,6 +5,7 @@ const VIEWS = ['home','authority','info','exam','check','report'];
 
 const state = {
   exam: null,
+  paperId: null,
   student: {name:'', place:'BEIJING', id:'', session:''},
   modules: [],
   answers: {}, flags: {}, offlineCompleted: {},
@@ -14,6 +15,7 @@ const state = {
   role: 'student', currentView: 'home', resultId: null,
   audioSources: [], audioSourceIndex: 0, audioReady: false, audioFailed: false
 };
+if (typeof window !== 'undefined') window.state = state;
 
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function escapeAttr(s){return escapeHtml(s)}
@@ -30,6 +32,28 @@ function fmtTime(sec){
   return `${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`;
 }
 function normText(s){return String(s||'').trim().toLowerCase().replace(/\s+/g,' ').replace(/[.!,。]/g,'')}
+
+function getExamData(exam){
+  return (typeof DATA !== 'undefined' && DATA[exam || state.exam]) || null;
+}
+function getPaperData(exam, paperId){
+  const e = getExamData(exam);
+  if(!e || !e.papers) return null;
+  const pid = paperId || (state && state.paperId) || 'test1';
+  return e.papers[pid] || e.papers.test1 || null;
+}
+function getPaperMeta(exam, paperId){
+  const ex = exam || state.exam;
+  const pid = paperId || (state && state.paperId) || 'test1';
+  const list = (window.PAPERS_CATALOG && window.PAPERS_CATALOG[ex]) || [];
+  return list.find(p => p.id === pid) || {
+    id: pid,
+    label: pid === 'test2' ? '试卷 2' : '试卷 1',
+    sourceLabel: pid === 'test2' ? 'Test2' : 'Test1',
+    title: pid === 'test2' ? `${ex} Test 2` : `${ex} Test 1`
+  };
+}
+
 
 const App = {
   _confirmAction:null,
@@ -94,7 +118,8 @@ const App = {
       if(draft?.exam){
         const saved=draft.savedAt?new Date(draft.savedAt).toLocaleString():'最近';
         const done=Object.keys(draft.answers||{}).filter(k=>String(draft.answers[k]||'').trim()).length;
-        resume.innerHTML=`<div><p class="eyebrow">未完成的考试</p><h2>继续 ${escapeHtml(draft.exam)} 模考</h2>
+        const pMeta=getPaperMeta(draft.exam, draft.paperId||'test1');
+        resume.innerHTML=`<div><p class="eyebrow">未完成的考试</p><h2>继续 ${escapeHtml(draft.exam)} · ${escapeHtml(pMeta.label)}</h2>
           <p class="lede">${escapeHtml(draft.student?.name||'考生')} · 已保存 ${done} 题 · ${escapeHtml(saved)}</p></div>
           <div class="btn-row"><button class="btn" onclick="App.resumeDraft()">继续考试</button>
           <button class="btn ghost" onclick="App.discardDraft()">放弃草稿</button></div>`;
@@ -104,9 +129,12 @@ const App = {
     if(historyPanel){
       historyPanel.classList.toggle('hidden', !results.length);
       if(results.length){
-        const rows=results.slice(-5).reverse().map(r=>`<button class="history-row" onclick="App.openSavedResult('${escapeAttr(r._id)}')">
-          <span><b>${escapeHtml(r.exam||'考试')} · ${escapeHtml(r.student?.name||'考生')}</b><small>${escapeHtml(r.at||'')}</small></span>
-          <span>查看报告 →</span></button>`).join('');
+        const rows=results.slice(-5).reverse().map(r=>{
+          const pMeta=getPaperMeta(r.exam, r.paperId||'test1');
+          return `<button class="history-row" onclick="App.openSavedResult('${escapeAttr(r._id)}')">
+            <span><b>${escapeHtml(r.exam||'考试')} · ${escapeHtml(pMeta.label)} · ${escapeHtml(r.student?.name||'考生')}</b><small>${escapeHtml(r.at||'')}</small></span>
+            <span>查看报告 →</span></button>`;
+        }).join('');
         historyPanel.innerHTML=`<div class="history-heading"><div><p class="eyebrow">本机记录</p><h2>历史报告</h2></div><div class="history-tools"><span class="quiet">最近 ${Math.min(results.length,5)} 份</span><button class="text-button" onclick="App.clearHistory()">清理记录</button></div></div>${rows}`;
       }
     }
@@ -129,15 +157,29 @@ const App = {
   },
   renderSetupSummary(){
     const el=$('examSetupSummary'); if(!el) return;
-    if(!state.exam){ el.innerHTML='<span>选择 PET 或 KET 后显示考试摘要。</span>'; return }
-    const d=DATA[state.exam];
-    const mins=state.modules.reduce((sum,id)=>sum+Math.round((d.timing?.[id]||0)/60),0);
-    const names=state.modules.map(id=>d.modules.find(m=>m.id===id)?.name.split(' ')[0]).filter(Boolean);
-    el.innerHTML=`<b>${state.exam} · ${state.mode==='formal'?'正式模考':'练习模式'}</b><span>约 ${mins} 分钟 · ${names.join('、')}</span>`;
+    const btn=$('btnStartExam');
+    if(!state.exam){
+      el.innerHTML='<span>请先选择 PET 或 KET 考试级别。</span>';
+      if(btn) btn.textContent='进入试卷作答';
+      return;
+    }
+    if(!state.paperId){
+      el.innerHTML=`<span>已选 ${state.exam}，请在下方选择试卷（试卷 1 或 试卷 2）。</span>`;
+      if(btn) btn.textContent=`进入 ${state.exam} 试卷作答`;
+      return;
+    }
+    const pMeta = getPaperMeta();
+    const paper = getPaperData();
+    const d = getExamData();
+    const timing = paper?.timing || d?.timing || {};
+    const mins = Math.round(Object.values(timing).reduce((a,b)=>a+b, 0)/60);
+    const names = state.modules.map(id=>d.modules.find(m=>m.id===id)?.name.split(' ')[0]).filter(Boolean);
+    el.innerHTML=`<b>${state.exam} · ${pMeta.label} · ${state.mode==='formal'?'正式模考':'练习模式'}</b><span>约 ${mins} 分钟 · ${names.join('、')}</span>`;
+    if(btn) btn.textContent=`进入 ${state.exam} ${pMeta.label}`;
   },
   resumeDraft(){
     const d=App.getDraft(); if(!d?.exam || !DATA[d.exam]){ toast('没有可恢复的考试',2600,'error'); return }
-    state.exam=d.exam; state.student=d.student||state.student; state.modules=(DATA[d.exam].modules||[]).map(m=>m.id);
+    state.exam=d.exam; state.paperId=d.paperId||'test1'; state.student=d.student||state.student; state.modules=(DATA[d.exam].modules||[]).map(m=>m.id);
     state.answers=d.answers||{}; state.flags=d.flags||{}; state.offlineCompleted=d.offlineCompleted||{};
     state.listenCounts=d.listenCounts||{}; state.currentPart=Math.max(0,Number(d.currentPart)||0);
     state.startedAt=d.startedAt||Date.now(); state.mode=d.mode||'formal'; state.moduleDeadlines=d.moduleDeadlines||{};
@@ -154,7 +196,7 @@ const App = {
   openSavedResult(id){
     const saved=App.getResults().find(r=>r._id===id);
     if(!saved){ toast('没有找到这份报告',2600,'error'); return }
-    state.exam=saved.exam; state.student=saved.student||state.student;
+    state.exam=saved.exam; state.paperId=saved.paperId||'test1'; state.student=saved.student||state.student;
     state.modules=DATA[state.exam].modules.map(m=>m.id);
     state.answers=saved.answers||{}; state.flags=saved.flags||{}; state.offlineCompleted=saved.offlineCompleted||{};
     state.listenCounts=saved.listenCounts||{}; state.results=saved.results; state.resultId=saved._id;
@@ -299,19 +341,47 @@ const App = {
   /* ---------- 首页 / 权威 ---------- */
 
   renderInfo(){
-    // 考生信息：试卷选择 + 固定考试内容
+    // 考生信息：级别选择 + 试卷选择 + 固定考试内容
     const exams = ['PET','KET'];
     const pick = $('examPick');
     if(pick){
       pick.innerHTML = exams.map(ex=>{
-        const d = DATA[ex];
         const active = state.exam===ex;
         return `<button type="button" class="exam-card ${active?'active':''}" onclick="App.pickExam('${ex}')" aria-pressed="${active}">
           <div class="badge">${ex==='PET'?'Preliminary':'Key'}</div>
           <h3>${ex} 模考</h3>
-          <p>${escapeHtml(d.title)}</p>
+          <p>${ex==='PET'?'Preliminary English Test (B1) · 包含多套试卷':'Key English Test (A2) · 包含多套试卷'}</p>
         </button>`;
       }).join('');
+    }
+
+    const paperPick = $('paperPick');
+    if(paperPick){
+      if(!state.exam){
+        paperPick.innerHTML = `<div class="paper-empty-hint">请先在上方选择考试级别（PET 或 KET）</div>`;
+      }else{
+        const catalog = (window.PAPERS_CATALOG && window.PAPERS_CATALOG[state.exam]) || [];
+        const draft = App.getDraft();
+        const results = App.getResults();
+        paperPick.innerHTML = catalog.map(p => {
+          const active = state.paperId === p.id;
+          const hasDraft = draft && draft.exam === state.exam && (draft.paperId || 'test1') === p.id;
+          const count = results.filter(r => r.exam === state.exam && (r.paperId || 'test1') === p.id).length;
+          let statusText = '未开始';
+          if(hasDraft) statusText = '有未完成草稿';
+          else if(count > 0) statusText = `本机已完成 ${count} 次`;
+
+          return `<button type="button" class="paper-card ${active?'active':''}" onclick="App.pickPaper('${p.id}')" aria-pressed="${active}">
+            <div class="paper-card__header">
+              <h4>${escapeHtml(p.label)}</h4>
+              <span class="paper-src">${escapeHtml(p.sourceLabel)}</span>
+            </div>
+            <div class="paper-desc">${escapeHtml(p.description)}</div>
+            <div class="paper-meta">客观题 ${p.objCount} 题 · 预计 ${escapeHtml(p.durationDesc)}</div>
+            <span class="paper-status">${escapeHtml(statusText)}</span>
+          </button>`;
+        }).join('');
+      }
     }
 
     const box = $('moduleChecks');
@@ -338,10 +408,19 @@ const App = {
     App.renderSetupSummary();
   },
   pickExam(ex){
-    if(state.exam!==ex) state.modules=[];
-    state.exam=ex;
+    if(state.exam!==ex){
+      state.exam=ex;
+      state.paperId=null;
+      state.modules=[];
+    }
     App.ensureExamId(true);
     App.renderInfo();
+    App.renderSetupSummary();
+  },
+  pickPaper(paperId){
+    state.paperId=paperId;
+    App.renderInfo();
+    App.renderSetupSummary();
   },
   ensureExamId(force){
     const inp=$('stuId'); if(!inp || !state.exam) return;
@@ -354,9 +433,39 @@ const App = {
     return inp.value;
   },
   startExam(){
-    if(!state.exam){ toast('请先选择 PET 或 KET',2600,'error'); $('examPick')?.scrollIntoView({behavior:'smooth',block:'center'}); return }
+    if(!state.exam){
+      toast('请先选择 PET 或 KET',2600,'error');
+      $('examPick')?.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    if(!state.paperId){
+      toast('请选择试卷',2600,'error');
+      $('paperSection')?.scrollIntoView({behavior:'smooth',block:'center'});
+      $('paperPick')?.querySelector('button')?.focus();
+      return;
+    }
     const name=$('stuName').value.trim();
     if(!name){ toast('请填写考生姓名',2600,'error'); $('stuName').focus(); return }
+
+    // 检查是否有其它试卷的未完成草稿
+    const draft = App.getDraft();
+    if(draft && draft.exam && (draft.exam !== state.exam || (draft.paperId || 'test1') !== state.paperId)){
+      const draftMeta = getPaperMeta(draft.exam, draft.paperId || 'test1');
+      App.askConfirm({
+        title: '覆盖未完成草稿？',
+        message: `当前有一份未完成的 ${draft.exam} · ${draftMeta.label}。开始新试卷会删除该草稿。`,
+        confirmText: '开始新试卷',
+        danger: true,
+        onConfirm: () => {
+          try{ localStorage.removeItem('petket_draft'); }catch(e){}
+          App._doStartExam(name);
+        }
+      });
+      return;
+    }
+    App._doStartExam(name);
+  },
+  _doStartExam(name){
     App.ensureExamId(false);
     let sid=($('stuId').value||'').trim();
     const letter=state.exam==='KET'?'K':'P';
@@ -383,19 +492,23 @@ const App = {
     App.buildExam();
     App.show('exam');
     App.startTimer();
-    toast('已进入试卷：客观题在线作答，写作与口语线下完成');
+    App.saveDraft();
+    const pMeta = getPaperMeta();
+    toast(`已进入 ${state.exam} ${pMeta.label}：客观题在线作答，写作与口语线下完成`);
   },
   activeParts(){
     const order={listening:0,reading:1,writing:2,speaking:3};
-    return DATA[state.exam].parts.filter(p=>state.modules.includes(p.module))
+    const paper = getPaperData();
+    const parts = (paper && paper.parts) || (DATA[state.exam] && DATA[state.exam].parts) || [];
+    return parts.filter(p=>state.modules.includes(p.module))
       .slice().sort((a,b)=>(order[a.module]??9)-(order[b.module]??9));
   },
   qKey(m,pid,n){return `${m}:${pid}:${n}`},
   currentPart(){return App.activeParts()[state.currentPart]},
   buildExam(){
-    const d=DATA[state.exam], parts=App.activeParts();
-    $('examTitle').textContent=`${state.exam} 模考`;
-    $('examSub').textContent=`${d.title} · ${state.student.name} · ${state.student.id} · 听力每部分 2 遍`;
+    const d=DATA[state.exam], paper=getPaperData(), pMeta=getPaperMeta(), parts=App.activeParts();
+    $('examTitle').textContent=`${state.exam} · ${pMeta.label}`;
+    $('examSub').textContent=`${paper.title} · ${state.student.name} · ${state.student.id} · 听力每部分 2 遍`;
     const modShort={listening:'听力',reading:'阅读',writing:'写作',speaking:'口语'};
     const grouped=parts.reduce((groups,p,i)=>{
       const last=groups[groups.length-1];
@@ -519,8 +632,13 @@ const App = {
   /* audio */
   loadCues(){
     try{
-      const map=JSON.parse(localStorage.getItem('petket_cues_'+state.exam)||'{}');
-      DATA[state.exam].parts.forEach(pt=>{
+      const paperId = state.paperId || 'test1';
+      const key = 'petket_cues_' + state.exam + '_' + paperId;
+      const raw = localStorage.getItem(key) || (paperId === 'test1' ? localStorage.getItem('petket_cues_' + state.exam) : null);
+      const map = JSON.parse(raw || '{}');
+      const paper = getPaperData();
+      const parts = paper?.parts || DATA[state.exam].parts || [];
+      parts.forEach(pt=>{
         if(pt.audioPart && map[pt.id]){
           if(map[pt.id].start!=null) pt.audioStart=map[pt.id].start;
           if(map[pt.id].end!=null) pt.audioEnd=map[pt.id].end;
@@ -530,7 +648,10 @@ const App = {
   },
   ensureAudioSrc(){
     const player=$('player');
-    const raw=(window.AUDIO_SOURCES&&window.AUDIO_SOURCES[state.exam])||[DATA[state.exam].audio];
+    const paper = getPaperData();
+    const paperId = state.paperId || 'test1';
+    const key = state.exam + '_' + paperId;
+    const raw = (window.AUDIO_SOURCES && (window.AUDIO_SOURCES[key] || window.AUDIO_SOURCES[state.exam])) || [paper?.audio, paper?.audioAlt];
     const list=[...new Set(raw.filter(Boolean))];
     if(!list.length){ App.setAudioFailed('未配置听力音频'); return }
     if(state.audioSources.join('|')!==list.join('|')){
@@ -577,7 +698,10 @@ const App = {
     $('audioCue').textContent=`本部分音频 ${range} · 每部分最多听 2 遍（官方）`;
     App.updateListenUI();
   },
-  listenLimit(){ return DATA[state.exam].listenLimit ?? 2 },
+  listenLimit(){
+    const paper = getPaperData();
+    return paper?.listenLimit ?? DATA[state.exam]?.listenLimit ?? 2;
+  },
   partHeard(id){ return state.listenCounts[id]||0 },
   listensLeft(id){ return Math.max(0, App.listenLimit()-App.partHeard(id)) },
   updateListenUI(){
@@ -627,8 +751,14 @@ const App = {
   },
   saveCues(){
     const map={};
-    DATA[state.exam].parts.forEach(pt=>{ if(pt.audioPart) map[pt.id]={start:pt.audioStart,end:pt.audioEnd} });
-    try{ localStorage.setItem('petket_cues_'+state.exam, JSON.stringify(map)); toast('时间点已保存') }catch(e){ toast('保存失败') }
+    const paper = getPaperData();
+    const paperId = state.paperId || 'test1';
+    const parts = paper?.parts || DATA[state.exam].parts || [];
+    parts.forEach(pt=>{ if(pt.audioPart) map[pt.id]={start:pt.audioStart,end:pt.audioEnd} });
+    try{
+      localStorage.setItem('petket_cues_'+state.exam+'_'+paperId, JSON.stringify(map));
+      toast('时间点已保存');
+    }catch(e){ toast('保存失败'); }
   },
   /* timer */
   startTimer(){
@@ -642,10 +772,11 @@ const App = {
     tick(); window.__timer=setInterval(tick,1000);
   },
   ensureDeadline(){
-    const d=DATA[state.exam];
-    const p=App.currentPart();
-    const mod=p?p.module:'listening';
-    const dur=(d.timing&&d.timing[mod])||0;
+    const paper = getPaperData();
+    const d = DATA[state.exam];
+    const p = App.currentPart();
+    const mod = p ? p.module : 'listening';
+    const dur = (paper?.timing && paper.timing[mod]) || (d?.timing && d.timing[mod]) || 0;
     if(!dur) return null;
     state.moduleDeadlines=state.moduleDeadlines||{};
     if(!state.moduleDeadlines[mod]) state.moduleDeadlines[mod]=Date.now()+dur*1000;
@@ -782,7 +913,16 @@ const App = {
         }
       });
     });
-    state.results={version:2,status:'objective_complete',byModule,typeStats,wrongs,at:new Date().toLocaleString()};
+    state.results={
+      version:3,
+      exam:state.exam,
+      paperId:state.paperId||'test1',
+      status:'objective_complete',
+      byModule,
+      typeStats,
+      wrongs,
+      at:new Date().toLocaleString()
+    };
     try{localStorage.removeItem('petket_draft')}catch(e){}
     clearInterval(window.__timer);
     App.renderReport();
@@ -896,6 +1036,8 @@ const App = {
   },
   renderReport(){
     const d=DATA[state.exam], r=state.results||{};
+    const paperId=state.paperId||r.paperId||'test1';
+    const pMeta=getPaperMeta(state.exam, paperId);
     const scores={};
     ['listening','reading'].forEach(id=>{
       const mod=d.modules.find(m=>m.id===id), info=r.byModule?.[id];
@@ -909,12 +1051,13 @@ const App = {
       <div class="r-head stage-report-head">
         <div>
           <div class="report-eyebrow">OBJECTIVE-SKILLS PROGRESS REPORT</div>
-          <div class="report-title">${escapeHtml(d.reportTemplate.examName||d.title)}</div>
+          <div class="report-title">${escapeHtml(d.reportTemplate.examName||d.title)} · ${escapeHtml(pMeta.label)}</div>
           <div class="kv">
             <span>Candidate name</span><b>${escapeHtml(state.student.name)}</b>
             <span>Place of entry</span><b>${escapeHtml(state.student.place)}</b>
             <span>Local reference</span><b>${escapeHtml(state.student.id)}</b>
             <span>Session</span><b>${escapeHtml(state.student.session)}</b>
+            <span>Exam &amp; Paper</span><b>${escapeHtml(state.exam)} · ${escapeHtml(pMeta.label)} <small style="font-weight:normal;color:#64748b">(${escapeHtml(paperId)})</small></b>
           </div>
         </div>
         <div class="report-status">
@@ -965,7 +1108,7 @@ const App = {
     if(!state.exam||state.results) return;
     try{
       localStorage.setItem('petket_draft', JSON.stringify({
-        version:2, exam:state.exam, student:state.student, modules:state.modules,
+        version:3, exam:state.exam, paperId:state.paperId||'test1', student:state.student, modules:state.modules,
         answers:state.answers, flags:state.flags, offlineCompleted:state.offlineCompleted,
         listenCounts:state.listenCounts, currentPart:state.currentPart, startedAt:state.startedAt,
         mode:state.mode,moduleDeadlines:state.moduleDeadlines,timeWarned:state.timeWarned,closedModules:state.closedModules,savedAt:Date.now()
@@ -980,7 +1123,7 @@ const App = {
     try{
       const list=JSON.parse(localStorage.getItem('petket_results')||'[]');
       const id=state.resultId||`${state.student.id}|${Date.now()}`; state.resultId=id;
-      const item={ version:2, _id:id, exam:state.exam, student:state.student, modules:state.modules, answers:state.answers,
+      const item={ version:3, _id:id, exam:state.exam, paperId:state.paperId||'test1', student:state.student, modules:state.modules, answers:state.answers,
         flags:state.flags, offlineCompleted:state.offlineCompleted, listenCounts:state.listenCounts,
         results:state.results, at:state.results?.at };
       const at=list.findIndex(x=>x._id===id); if(at>=0) list[at]=item; else list.push(item);

@@ -128,15 +128,45 @@
 
     <!-- ③ 试卷页 -->
     <section id="view-exam" class="hidden">
-      <div class="panel">
-        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-          <div>
-            <h2 id="examTitle">试卷</h2>
-            <div class="quiet" id="examSub"></div>
+      <!-- 网页上端固定上栏：试卷标识、突出显眼倒计时与客观题进度 -->
+      <header class="exam-topbar" id="examTopbar" aria-label="考试信息与倒计时栏">
+        <div class="exam-topbar__inner">
+          <div class="exam-topbar__info">
+            <h2 id="examTitle" class="exam-topbar__title">试卷</h2>
+            <div class="exam-topbar__sub quiet" id="examSub"></div>
           </div>
-          <div class="quiet">客观题进度 <b id="progressText" style="font-size:18px;color:var(--color-foreground)">已答 0 / 0</b></div>
+
+          <!-- 突出显眼的倒计时模块 -->
+          <div class="exam-clock-badge exam-clock" id="examClockBadge" role="timer" aria-label="考试倒计时与用时">
+            <div class="exam-clock-badge__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="exam-clock-badge__main">
+              <span id="countdownText" class="exam-countdown-text">倒计时 —</span>
+              <div class="exam-clock-badge__meta">
+                <span class="exam-elapsed-text">已用时 <span id="timerText">00:00</span></span>
+                <span class="exam-clock-badge__dot" aria-hidden="true">·</span>
+                <span id="saveStatus" class="exam-save-text">已自动保存</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exam-topbar__progress">
+            <span class="quiet">客观题进度</span>
+            <b id="progressText" class="exam-progress-num">已答 0 / 0</b>
+          </div>
         </div>
-        <div class="progress-bar" style="height:6px;background:var(--color-muted);border-radius:999px;margin:12px 0"><i id="progressFill" style="display:block;height:100%;width:0;background:var(--color-accent);border-radius:999px"></i></div>
+        
+        <!-- 进度指示条贴合在上栏底部 -->
+        <div class="exam-topbar__track" aria-hidden="true">
+          <i id="progressFill" class="exam-topbar__fill"></i>
+        </div>
+      </header>
+
+      <div class="panel exam-main-panel">
         <div class="part-nav" id="partNav"></div>
         <div id="audioWrap" class="audio hidden">
           <div class="audio__details">
@@ -153,8 +183,7 @@
         </div>
         <div id="questionArea"></div>
         <div class="sticky" aria-label="考试操作栏">
-          <div class="exam-clock"><span id="timerText">00:00</span><span aria-hidden="true"> · </span><span id="countdownText">—</span><span id="saveStatus">已自动保存</span></div>
-          <div class="exam-actions">
+          <div class="exam-actions exam-actions--full">
             <button class="btn ghost" onclick="App.prevPart()">上一部分</button>
             <button class="btn soft" onclick="App.openCheck()">答题卡</button>
             <button class="btn ghost" onclick="App.nextPart()">下一部分</button>

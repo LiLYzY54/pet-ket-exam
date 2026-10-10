@@ -785,13 +785,30 @@ const App = {
   updateCountdown(){
     const endsAt=App.ensureDeadline();
     const el=$('countdownText');
+    const badge=$('examClockBadge');
     const mod=App.currentPart()?.module;
-    if(!endsAt || !mod){ el.textContent='倒计时 —'; return }
+    if(!endsAt || !mod){
+      if(el) el.textContent='倒计时 —';
+      if(badge) badge.classList.remove('is-warning','is-urgent');
+      return;
+    }
     const left=Math.max(0,Math.floor((endsAt-Date.now())/1000));
     const label=({listening:'听力剩余',reading:'阅读剩余',writing:'写作剩余',speaking:'口语剩余'}[mod]||'剩余');
-    el.textContent=`${label} ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
+    if(el) el.textContent=`${label} ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
+    if(badge){
+      if(left <= 60 && left > 0){
+        badge.classList.remove('is-warning');
+        badge.classList.add('is-urgent');
+      } else if(left <= 300 && left > 0){
+        badge.classList.remove('is-urgent');
+        badge.classList.add('is-warning');
+      } else {
+        badge.classList.remove('is-warning','is-urgent');
+      }
+    }
     if(left===0 && !state.timeWarned[mod+':0']){
       state.timeWarned[mod+':0']=true; App.saveDraft();
+      if(badge){ badge.classList.remove('is-warning'); badge.classList.add('is-urgent'); }
       if(state.mode==='formal'){
         const parts=App.activeParts();
         const next=parts.findIndex((p,i)=>i>state.currentPart && p.module!==mod);

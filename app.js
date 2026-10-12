@@ -771,7 +771,17 @@ const App = {
     const p=App.currentPart(); if(!p||!p.audioPart) return;
     const player=$('player');
     const t=p.audioStart??0;
-    if(player.readyState>=1){ try{player.currentTime=t}catch(e){}; if(play) App.playPart() }
+    if(player.readyState>=1){
+      try{player.currentTime=t}catch(e){};
+      if(play) App.playPart();
+    } else {
+      const onMeta = () => {
+        player.removeEventListener('loadedmetadata', onMeta);
+        try{player.currentTime=t}catch(e){};
+        if(play) App.playPart();
+      };
+      player.addEventListener('loadedmetadata', onMeta);
+    }
   },
   playPart(){
     const p=App.currentPart(); if(!p||!p.audioPart) return;
@@ -781,6 +791,11 @@ const App = {
     if(state.audioBuffering){ toast('音频正在缓冲，请稍候',2000); return }
     if(state.hearOpen===p.id){ player.play().catch(()=>{}); App.updateListenUI(); return }
     if(App.listensLeft(p.id)<=0){ toast('本部分听力次数已用完'); return }
+    const start = p.audioStart ?? 0;
+    const end = p.audioEnd ?? Infinity;
+    if(player.currentTime >= end - 0.5 || player.currentTime < start){
+      try { player.currentTime = start; } catch(e){}
+    }
     App.seekPart(false);
     state.audioBuffering=true;
     App.updateListenUI();
@@ -841,6 +856,11 @@ const App = {
       if(el) el.textContent='倒计时 —';
       if(badge) badge.classList.remove('is-warning','is-urgent');
       return;
+    }
+    if(mod==='listening' && (!state.audioReady || state.audioBuffering)){
+      if(state.moduleDeadlines && state.moduleDeadlines[mod]){
+        state.moduleDeadlines[mod] += 1000;
+      }
     }
     const left=Math.max(0,Math.floor((endsAt-Date.now())/1000));
     const label=({listening:'听力剩余',reading:'阅读剩余',writing:'写作剩余',speaking:'口语剩余'}[mod]||'剩余');
@@ -1288,6 +1308,7 @@ function bindAudio(){
     const p=App.currentPart(); if(!p||!p.audioPart) return;
     if(p.audioEnd!=null && player.currentTime>=p.audioEnd && !player.paused){
       player.pause();
+      try { player.currentTime = p.audioStart ?? 0; } catch(e){}
       state.hearOpen=null;
       state.audioBuffering=false;
       App.updateListenUI();

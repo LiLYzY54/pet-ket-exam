@@ -51,6 +51,7 @@ async function main() {
   await call('Runtime.enable');
   await call('Page.enable');
   await waitFor('window.App && document.querySelector("#view-home")', 'Home ready');
+  await evaluate('localStorage.clear(); window.App.renderSavedState();');
 
   // Start PET exam
   await evaluate(`

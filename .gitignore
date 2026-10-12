@@ -7,3 +7,6 @@ output_*.pdf
 PET-KET在线测试.html
 assets/*
 !assets/test2/
+pdf_page_*.png
+audit_screenshots/
+audit_parts_screenshots/

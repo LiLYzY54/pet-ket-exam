@@ -59,6 +59,9 @@ body{
 a{color:var(--color-accent);text-underline-offset:2px}
 a:hover{color:var(--color-accent-hover)}
 :focus-visible{outline:2px solid var(--color-ring);outline-offset:2px}
+h1[tabindex="-1"]:focus,
+h2[tabindex="-1"]:focus,
+h3[tabindex="-1"]:focus{outline:none!important}
 button,input,select,textarea{font:inherit}
 img{max-width:100%;height:auto}
 
@@ -802,7 +805,7 @@ table.rt th{background:var(--color-muted);font-weight:750;color:var(--color-seco
 
 .hint,.note{border-radius:10px}
 .toast{
-  position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+  position:fixed;left:50%;top:24px;transform:translateX(-50%);
   background:var(--color-primary);color:#fff;padding:12px 18px;border-radius:10px;
   font-size:.875rem;font-weight:600;z-index:99;
   box-shadow:var(--shadow-lg);opacity:0;transition:opacity .2s ease;pointer-events:none;
@@ -1052,6 +1055,7 @@ footer.foot{
 @media print{
   @page{size:A4 portrait;margin:11mm}
   html,body{background:#fff;font-size:10.5pt}
+  *:focus,*:focus-visible{outline:none!important;box-shadow:none!important}
   header.top,.sticky,.btn-row,.auth-tabs,footer.foot,.toast,.confirm-dialog{display:none!important}
   body>.wrap{max-width:none;padding:0}
   body>.wrap>section:not(#view-report){display:none!important}

@@ -112,7 +112,7 @@ window.TEST2_PAPERS = {
         "id": "P2",
         "name": "Part 2 软件匹配",
         "instruction": "The young people below are all looking for new computer software. Decide which software would be the most suitable for each person (A–H).",
-        "textHtml": "<div class=\"reading-columns\">\n<div class=\"rc-item\"><b>A Riff</b>: This software comes with a special wireless plastic guitar. By following lessons, you learn to play classic songs from different periods of rock history. Then watch yourself on-screen, in front of your screaming fans, playing like a true guitar hero. You can even create your own songs and play them to your friends.</div>\n<div class=\"rc-item\"><b>B Junior Player</b>: Pro Player was an imaginative piece of software that helped many adult games players write their own games. This simpler version starts at a basic level but will soon help you write games good enough to keep you and your friends entertained for hours.</div>\n<div class=\"rc-item\"><b>C Masterclass</b>: This program helps you learn about art and how to do it. It explains the meaning of the great paintings from history and how they were made. It also gives very practical lessons in the techniques of painting and drawing. It’s rather serious and suitable for people with good computer skills.</div>\n<div class=\"rc-item\"><b>D My Studio</b>: With this software installed on your computer you can create almost any style of sound you want: from simple tunes to the background music for home movies. It is challenging to use but it has clear instructions.</div>\n<div class=\"rc-item\"><b>E Out of it</b>: In this internet game you choose a character for yourself and travel across the universe to worlds that may or may not exist, getting to know other online travellers along the way. One good thing is that you don’t need the newest technology to run the game.</div>\n<div class=\"rc-item\"><b>F Capers</b>: You don’t have to be a technology expert to make fine cartoon films with this software. Besides a sense of humour, all you really need is a little artistic talent. You can even add your own music, though that requires slightly higher computer skills.</div>\n<div class=\"rc-item\"><b>G Coach</b>: This software looks at how to learn and how to teach practical skills in areas like sports, music and other creative arts. Players teach each other certain skills and, by doing this, improve their understanding of the best ways of learning something.</div>\n<div class=\"rc-item\"><b>H Wonderful World</b>: Imagine yourself as a young girl living in a cave making a fire with sticks, or a Roman soldier fighting your way across Europe 2,000 years ago. These are just two of the hundreds of roles you could play in this fascinating online game. Requires the latest computer operating system.</div>\n</div>",
+        "passageHtml": "<div class=\"reading-columns\">\n<div class=\"rc-item\"><b>A Riff</b>: This software comes with a special wireless plastic guitar. By following lessons, you learn to play classic songs from different periods of rock history. Then watch yourself on-screen, in front of your screaming fans, playing like a true guitar hero. You can even create your own songs and play them to your friends.</div>\n<div class=\"rc-item\"><b>B Junior Player</b>: Pro Player was an imaginative piece of software that helped many adult games players write their own games. This simpler version starts at a basic level but will soon help you write games good enough to keep you and your friends entertained for hours.</div>\n<div class=\"rc-item\"><b>C Masterclass</b>: This program helps you learn about art and how to do it. It explains the meaning of the great paintings from history and how they were made. It also gives very practical lessons in the techniques of painting and drawing. It’s rather serious and suitable for people with good computer skills.</div>\n<div class=\"rc-item\"><b>D My Studio</b>: With this software installed on your computer you can create almost any style of sound you want: from simple tunes to the background music for home movies. It is challenging to use but it has clear instructions.</div>\n<div class=\"rc-item\"><b>E Out of it</b>: In this internet game you choose a character for yourself and travel across the universe to worlds that may or may not exist, getting to know other online travellers along the way. One good thing is that you don’t need the newest technology to run the game.</div>\n<div class=\"rc-item\"><b>F Capers</b>: You don’t have to be a technology expert to make fine cartoon films with this software. Besides a sense of humour, all you really need is a little artistic talent. You can even add your own music, though that requires slightly higher computer skills.</div>\n<div class=\"rc-item\"><b>G Coach</b>: This software looks at how to learn and how to teach practical skills in areas like sports, music and other creative arts. Players teach each other certain skills and, by doing this, improve their understanding of the best ways of learning something.</div>\n<div class=\"rc-item\"><b>H Wonderful World</b>: Imagine yourself as a young girl living in a cave making a fire with sticks, or a Roman soldier fighting your way across Europe 2,000 years ago. These are just two of the hundreds of roles you could play in this fascinating online game. Requires the latest computer operating system.</div>\n</div>",
         "questions": [
           {
             "n": 6,
@@ -251,7 +251,7 @@ window.TEST2_PAPERS = {
         "id": "P3",
         "name": "Part 3 长文阅读",
         "instruction": "Read the text and choose the correct answer for each question.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Tina West, young climber</h3>\n<p>I'm 16 and my hobby is indoor climbing. It started when I went to a sports centre that had climbing walls. I wasn't frightened of heights and immediately fell in love with the activity.</p>\n<p>Everyone in my family loves sport and aims to do their best, whatever the activity. I can never let my brother beat me in table-tennis! My mother plays volleyball. I also play it occasionally, but she doesn't have to persuade me. I do it because it's a great way of keeping fit. My parents aren't experts on climbing, but they encourage me to keep developing my skills to the highest level possible.</p>\n<p>I'm getting quite good at climbing now. The best climbers are often tall with long legs. I don't really fit that description, but never mind, I'm still growing. Climbers need to concentrate for long periods, which I don't always manage, but I do have the necessary strength in my fingers and arms. When I'm climbing, I enjoy planning the best route to the top. It's like solving a puzzle at great speed and it's my special talent.</p>\n<p>I remember my first competition when I was 12. I thought the other girls looked so confident whereas I was scared of failing. However, I finished in the top five. Since then, I've rarely been nervous before competitions and I feel certain I'm going to have fun. I don't start daydreaming about possible success; I just listen to music on my headphones and ignore the other climbers. Afterwards, I avoid spending too much time thinking about the things I got wrong.</p>\n<p>I train most days at the sports centre but it's never enough! Although some might find it tiring getting up early to train hard every day, I don't mind. I get particular pleasure from attempting difficult new skills. Very soon I'll be competing against adults for the first time, which is exciting. This will mean having to train more and so getting homework done won't be easy. I can't do things other teenagers do, like go to parties, because I'm either training or involved in competitions, but it's my choice to give up my social life for now.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Tina West, young climber</h3>\n<p>I'm 16 and my hobby is indoor climbing. It started when I went to a sports centre that had climbing walls. I wasn't frightened of heights and immediately fell in love with the activity.</p>\n<p>Everyone in my family loves sport and aims to do their best, whatever the activity. I can never let my brother beat me in table-tennis! My mother plays volleyball. I also play it occasionally, but she doesn't have to persuade me. I do it because it's a great way of keeping fit. My parents aren't experts on climbing, but they encourage me to keep developing my skills to the highest level possible.</p>\n<p>I'm getting quite good at climbing now. The best climbers are often tall with long legs. I don't really fit that description, but never mind, I'm still growing. Climbers need to concentrate for long periods, which I don't always manage, but I do have the necessary strength in my fingers and arms. When I'm climbing, I enjoy planning the best route to the top. It's like solving a puzzle at great speed and it's my special talent.</p>\n<p>I remember my first competition when I was 12. I thought the other girls looked so confident whereas I was scared of failing. However, I finished in the top five. Since then, I've rarely been nervous before competitions and I feel certain I'm going to have fun. I don't start daydreaming about possible success; I just listen to music on my headphones and ignore the other climbers. Afterwards, I avoid spending too much time thinking about the things I got wrong.</p>\n<p>I train most days at the sports centre but it's never enough! Although some might find it tiring getting up early to train hard every day, I don't mind. I get particular pleasure from attempting difficult new skills. Very soon I'll be competing against adults for the first time, which is exciting. This will mean having to train more and so getting homework done won't be easy. I can't do things other teenagers do, like go to parties, because I'm either training or involved in competitions, but it's my choice to give up my social life for now.</p>\n</div>",
         "questions": [
           {
             "n": 11,
@@ -350,7 +350,7 @@ window.TEST2_PAPERS = {
         "id": "P4",
         "name": "Part 4 段落还原",
         "instruction": "Five sentences have been removed from the text below. For each question, choose the correct answer (A–H). There are three extra sentences.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Hiking Trip</h3>\n<p>My whole family is mad about hiking, which is why we travelled halfway across the world to the village of Bukit Lawang in northern Indonesia. As soon as we arrived, we were greeted by a young Indonesian man called Harta. He was going to be our hiking guide over the next couple of days. <b>[ 16 ]</b> After about the first hour of walking, Harta quietly waved for us to stop.</p>\n<p>That’s when I saw orangutans for the very first time. These amazing animals are large, red-coloured apes. I was so excited as I watched them sitting in the trees looking down at us. <b>[ 17 ]</b> After that happened, we quickly set off again.</p>\n<p>As we made our way through even thicker rainforest, I asked Harta how he didn’t get lost in the jungle. <b>[ 18 ]</b> After hours of hiking, I got to a point where I thought I couldn’t possibly walk another step. That’s when I discovered I had to climb down an extremely steep cliff. If I made one wrong move on the way to the bottom, I could be seriously injured!</p>\n<p>The river below finally came into view and I almost cried with happiness when we finally stood beside it. <b>[ 19 ]</b> In order to reach it, he explained, we had to cross the river. Somehow, I managed to reach the other side.</p>\n<p>That night, lying under the stars, I had never felt so surrounded by nature. <b>[ 20 ]</b> That was especially true when I heard some animal noises coming from a nearby tree. Despite that, I managed to fall asleep and didn’t wake until sunrise.</p>\n<hr/>\n<div class=\"rc-sentences\">\n<p><b>A</b> One was even brave enough to take some fruit from my rucksack.</p>\n<p><b>B</b> I couldn't believe that they had reached the camp.</p>\n<p><b>C</b> In reply, he simply explained that he'd been born there.</p>\n<p><b>D</b> We arrived at the small village in the middle of the wild rainforest.</p>\n<p><b>E</b> Harta gently reminded me that the camp was just a little further.</p>\n<p><b>F</b> I fell several times as I attempted to hike up the steep paths.</p>\n<p><b>G</b> After making sure we had everything we needed, we followed him into the rainforest.</p>\n<p><b>H</b> In fact, it felt a bit too close.</p>\n</div>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Hiking Trip</h3>\n<p>My whole family is mad about hiking, which is why we travelled halfway across the world to the village of Bukit Lawang in northern Indonesia. As soon as we arrived, we were greeted by a young Indonesian man called Harta. He was going to be our hiking guide over the next couple of days. <b>[ 16 ]</b> After about the first hour of walking, Harta quietly waved for us to stop.</p>\n<p>That’s when I saw orangutans for the very first time. These amazing animals are large, red-coloured apes. I was so excited as I watched them sitting in the trees looking down at us. <b>[ 17 ]</b> After that happened, we quickly set off again.</p>\n<p>As we made our way through even thicker rainforest, I asked Harta how he didn’t get lost in the jungle. <b>[ 18 ]</b> After hours of hiking, I got to a point where I thought I couldn’t possibly walk another step. That’s when I discovered I had to climb down an extremely steep cliff. If I made one wrong move on the way to the bottom, I could be seriously injured!</p>\n<p>The river below finally came into view and I almost cried with happiness when we finally stood beside it. <b>[ 19 ]</b> In order to reach it, he explained, we had to cross the river. Somehow, I managed to reach the other side.</p>\n<p>That night, lying under the stars, I had never felt so surrounded by nature. <b>[ 20 ]</b> That was especially true when I heard some animal noises coming from a nearby tree. Despite that, I managed to fall asleep and didn’t wake until sunrise.</p>\n<hr/>\n<div class=\"rc-sentences\">\n<p><b>A</b> One was even brave enough to take some fruit from my rucksack.</p>\n<p><b>B</b> I couldn't believe that they had reached the camp.</p>\n<p><b>C</b> In reply, he simply explained that he'd been born there.</p>\n<p><b>D</b> We arrived at the small village in the middle of the wild rainforest.</p>\n<p><b>E</b> Harta gently reminded me that the camp was just a little further.</p>\n<p><b>F</b> I fell several times as I attempted to hike up the steep paths.</p>\n<p><b>G</b> After making sure we had everything we needed, we followed him into the rainforest.</p>\n<p><b>H</b> In fact, it felt a bit too close.</p>\n</div>\n</div>",
         "questions": [
           {
             "n": 16,
@@ -489,7 +489,7 @@ window.TEST2_PAPERS = {
         "id": "P5",
         "name": "Part 5 词汇完形",
         "instruction": "For each question, choose the correct answer.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Camels</h3>\n<p>Camels are mainly found in Africa and Asia. They can remain in the desert without food and water for up to ten days. For this <b>(21)</b> ....., camels are very useful animals in places where water may not be <b>(22)</b> ..... for days. They are sometimes known as ‘ships of the desert’. That’s because they are strong, and can carry extremely heavy loads over <b>(23)</b> ..... distances.</p>\n<p>Camels’ bodies have developed to deal with the desert environment. Their wide feet help to <b>(24)</b> ..... them from sinking into desert sand. What’s more, their noses, ears and eyes are designed to stop sand getting in during desert storms.</p>\n<p>Before setting off on a long journey, camels take in huge <b>(25)</b> ..... of food and water. Some people think camels carry water in the hump on their backs, but in fact this contains fat; the water they need is <b>(26)</b> ..... in two bags in their stomachs.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Camels</h3>\n<p>Camels are mainly found in Africa and Asia. They can remain in the desert without food and water for up to ten days. For this <b>(21)</b> ....., camels are very useful animals in places where water may not be <b>(22)</b> ..... for days. They are sometimes known as ‘ships of the desert’. That’s because they are strong, and can carry extremely heavy loads over <b>(23)</b> ..... distances.</p>\n<p>Camels’ bodies have developed to deal with the desert environment. Their wide feet help to <b>(24)</b> ..... them from sinking into desert sand. What’s more, their noses, ears and eyes are designed to stop sand getting in during desert storms.</p>\n<p>Before setting off on a long journey, camels take in huge <b>(25)</b> ..... of food and water. Some people think camels carry water in the hump on their backs, but in fact this contains fat; the water they need is <b>(26)</b> ..... in two bags in their stomachs.</p>\n</div>",
         "questions": [
           {
             "n": 21,
@@ -606,7 +606,7 @@ window.TEST2_PAPERS = {
         "id": "P6",
         "name": "Part 6 语法开放完形",
         "instruction": "For each question, write the correct answer. Write one word for each gap.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">My week at Westwood Theatre School</h3>\n<p>Last month, I spent a week at Westwood Theatre School, working with professional actors and directors. The other students and I studied acting, dancing and singing, and we <b>(27)</b> ..... taught how to perform on stage. We had to take part in a show at the end of the week, so we wanted to do our best.</p>\n<p>We started the first day by doing some yoga exercises, which helped us all to relax. Then we played some games to help us get to know <b>(28)</b> ..... other. I didn’t enjoy those activities very <b>(29)</b> ....., but I loved it when we began practising for our show! After that, we spent most <b>(30)</b> ..... our time preparing for that.</p>\n<p>At first, <b>(31)</b> ..... was difficult to remember all the words to the songs. But we practised all week, and by <b>(32)</b> ..... time we performed for an audience, we knew the words perfectly.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">My week at Westwood Theatre School</h3>\n<p>Last month, I spent a week at Westwood Theatre School, working with professional actors and directors. The other students and I studied acting, dancing and singing, and we <b>(27)</b> ..... taught how to perform on stage. We had to take part in a show at the end of the week, so we wanted to do our best.</p>\n<p>We started the first day by doing some yoga exercises, which helped us all to relax. Then we played some games to help us get to know <b>(28)</b> ..... other. I didn’t enjoy those activities very <b>(29)</b> ....., but I loved it when we began practising for our show! After that, we spent most <b>(30)</b> ..... our time preparing for that.</p>\n<p>At first, <b>(31)</b> ..... was difficult to remember all the words to the songs. But we practised all week, and by <b>(32)</b> ..... time we performed for an audience, we knew the words perfectly.</p>\n</div>",
         "questions": [
           {
             "n": 27,
@@ -670,7 +670,7 @@ window.TEST2_PAPERS = {
         "name": "Part 1 图片选择",
         "instruction": "For each question, choose the correct answer (A, B, or C).",
         "audioPart": true,
-        "audioStart": 31,
+        "audioStart": 0,
         "audioEnd": 607,
         "questions": [
           {
@@ -909,7 +909,7 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 1187,
         "audioEnd": 1474,
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Castle visit</h3>\n<p>You will hear a student called Noah giving a class presentation about a visit he made to a castle.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Castle visit</h3>\n<p>You will hear a student called Noah giving a class presentation about a visit he made to a castle.</p>\n</div>",
         "questions": [
           {
             "n": 14,
@@ -1138,7 +1138,7 @@ window.TEST2_PAPERS = {
         "name": "Part 1 图片选择",
         "instruction": "For each question, choose the correct answer (A, B, or C).",
         "audioPart": true,
-        "audioStart": 30,
+        "audioStart": 0,
         "audioEnd": 380,
         "questions": [
           {
@@ -1236,7 +1236,7 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 380,
         "audioEnd": 636,
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">New after-school activity</h3>\n<p>You will hear a headteacher telling her students about a new after-school activity.</p>\n<p><b>Name:</b> Safer Cycling</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">New after-school activity</h3>\n<p>You will hear a headteacher telling her students about a new after-school activity.</p>\n<p><b>Name:</b> Safer Cycling</p>\n</div>",
         "questions": [
           {
             "n": 6,
@@ -1299,7 +1299,7 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 636,
         "audioEnd": 869,
-        "textHtml": "<div class=\"reading-article\">\n<p>You will hear two friends, Nina and Jake, talking about a concert they both went to.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<p>You will hear two friends, Nina and Jake, talking about a concert they both went to.</p>\n</div>",
         "questions": [
           {
             "n": 11,
@@ -1482,7 +1482,7 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 1252,
         "audioEnd": 1489,
-        "textHtml": "<div class=\"reading-article\">\n<p><b>Places:</b> A airport | B beach | C farm | D forest | E garden | F market | G school | H station</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<p><b>Places:</b> A airport | B beach | C farm | D forest | E garden | F market | G school | H station</p>\n</div>",
         "questions": [
           {
             "n": 21,
@@ -1633,94 +1633,94 @@ window.TEST2_PAPERS = {
               "You need to buy some batteries before you use this camera."
             ],
             "labels": [
-              "You get some spare batteries when you buy this camera.",
-              "You should look at the instructions to find out which batteries to buy.",
-              "You need to buy some batteries before you use this camera."
+              "A You get some spare batteries when you buy this camera.",
+              "B You should look at the instructions to find out which batteries to buy.",
+              "C You need to buy some batteries before you use this camera."
             ],
             "answer": "C"
           },
           {
             "n": 2,
             "type": "mc",
-            "stem": "短信：Lisa, I've missed the bus so I'll be 20 minutes late...",
+            "stem": "Why is Kelly texting Lisa?",
             "image": "assets/test2/ket_r1_q2.png",
             "options": [
               "to ask her to give a message to their dance teacher",
-              "to see if she can come and pick her up by car",
-              "to invite her to go to a dance class together"
+              "to suggest a good way of getting to the dance class",
+              "to tell her how long the dance class will be"
             ],
             "labels": [
-              "to ask her to give a message to their dance teacher",
-              "to see if she can come and pick her up by car",
-              "to invite her to go to a dance class together"
+              "A to ask her to give a message to their dance teacher",
+              "B to suggest a good way of getting to the dance class",
+              "C to tell her how long the dance class will be"
             ],
             "answer": "A"
           },
           {
             "n": 3,
             "type": "mc",
-            "stem": "便条：Interested in buying the computer game Dragon from my cousin?...",
+            "stem": "If you want your watch back, you should",
             "image": "assets/test2/ket_r1_q3.png",
             "options": [
-              "giving information about a computer game he's played.",
-              "asking to borrow a computer game his cousin has recommended.",
-              "suggesting his friend might like to buy a cheap computer game."
+              "see Mr Smith.",
+              "look in Classroom 207.",
+              "go to the office."
             ],
             "labels": [
-              "giving information about a computer game he's played.",
-              "asking to borrow a computer game his cousin has recommended.",
-              "suggesting his friend might like to buy a cheap computer game."
+              "A see Mr Smith.",
+              "B look in Classroom 207.",
+              "C go to the office."
             ],
             "answer": "C"
           },
           {
             "n": 4,
             "type": "mc",
-            "stem": "告示：Castle Tour Notice: All visitors must leave bags in lockers...",
+            "stem": "What is Brian asking Steve to do?",
             "image": "assets/test2/ket_r1_q4.png",
             "options": [
-              "You can carry small bags during the castle tour.",
-              "You must pay to use the lockers in the castle.",
-              "Bags are not allowed inside the castle during the tour."
+              "take a photo",
+              "describe a photo",
+              "share a photo with him"
             ],
             "labels": [
-              "You can carry small bags during the castle tour.",
-              "You must pay to use the lockers in the castle.",
-              "Bags are not allowed inside the castle during the tour."
+              "A take a photo",
+              "B describe a photo",
+              "C share a photo with him"
             ],
             "answer": "C"
           },
           {
             "n": 5,
             "type": "mc",
-            "stem": "告示：Tennis courts: Booking essential online before arrival...",
+            "stem": "告示：Football match",
             "image": "assets/test2/ket_r1_q5.png",
             "options": [
-              "You have to book a court before you arrive to play tennis.",
-              "You can only book tennis courts in person at reception.",
-              "The tennis courts are free for everyone to use at any time."
+              "Today's football match will be at another school.",
+              "The Eastside football team is arriving after lunchtime today.",
+              "Students can watch the football match at 2 o'clock today."
             ],
             "labels": [
-              "You have to book a court before you arrive to play tennis.",
-              "You can only book tennis courts in person at reception.",
-              "The tennis courts are free for everyone to use at any time."
+              "A Today's football match will be at another school.",
+              "B The Eastside football team is arriving after lunchtime today.",
+              "C Students can watch the football match at 2 o'clock today."
             ],
             "answer": "A"
           },
           {
             "n": 6,
             "type": "mc",
-            "stem": "短信：Swimming gala: Please bring your school sports kit...",
+            "stem": "Why should students contact Mrs Stevens?",
             "image": "assets/test2/ket_r1_q6.png",
             "options": [
-              "Students should buy new swimming kit for the gala.",
-              "Students must bring their school kit to take part.",
-              "The swimming gala has been postponed until next week."
+              "to find out the time of the talk",
+              "to tell her if they want to go to the talk",
+              "to get information about the subject of the talk"
             ],
             "labels": [
-              "Students should buy new swimming kit for the gala.",
-              "Students must bring their school kit to take part.",
-              "The swimming gala has been postponed until next week."
+              "A to find out the time of the talk",
+              "B to tell her if they want to go to the talk",
+              "C to get information about the subject of the talk"
             ],
             "answer": "B"
           }
@@ -1731,7 +1731,7 @@ window.TEST2_PAPERS = {
         "id": "R2",
         "name": "Part 2 信息匹配",
         "instruction": "For each question, choose the correct answer (A Splash Central, B Aqua World, or C Calypso Park).",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Waterparks to visit</h3>\n<div class=\"rc-item\"><b>A Splash Central</b>: With only 15 rides, Splash Central isn’t the largest waterpark, but it's open all through spring, summer and autumn. The gym and beauty centre are perfect for adults who prefer to leave their children to enjoy the park's rides by themselves. At the start of this season, the park opened its first surfing pool. Visitors who are good swimmers can now book a two-hour course in this popular watersport — but it’s important to arrive early because only 12 people can surf at a time.</div>\n<div class=\"rc-item\"><b>B Aqua World</b>: There’s a ride at Aqua World called Crazy River that opened only last year. It's quicker than rides at any other waterpark and is already popular with teenagers. The park opens in the summer and has water activities for all ages, including a very safe water-play centre where parents can take their young children who haven't started learning to swim yet. Aqua World also has a fantastic café with views over the lake where there are windsurfing races four times a year.</div>\n<div class=\"rc-item\"><b>C Calypso Park</b>: Calypso Park, which is only closed from 25 December to 2 January, is the oldest waterpark in the area. There are four different swimming pools and a fantastic waterfall. If you visit next month, you'll be among the first to try Storm Pool. It's an exciting ride that makes you feel like you're in a small sailing boat at sea. Many schools bring big classes of children to Calypso Park, so it’s best to arrive early morning or late afternoon if you don't like rides that get busy.</div>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Waterparks to visit</h3>\n<div class=\"rc-item\"><b>A Splash Central</b>: With only 15 rides, Splash Central isn’t the largest waterpark, but it's open all through spring, summer and autumn. The gym and beauty centre are perfect for adults who prefer to leave their children to enjoy the park's rides by themselves. At the start of this season, the park opened its first surfing pool. Visitors who are good swimmers can now book a two-hour course in this popular watersport — but it’s important to arrive early because only 12 people can surf at a time.</div>\n<div class=\"rc-item\"><b>B Aqua World</b>: There’s a ride at Aqua World called Crazy River that opened only last year. It's quicker than rides at any other waterpark and is already popular with teenagers. The park opens in the summer and has water activities for all ages, including a very safe water-play centre where parents can take their young children who haven't started learning to swim yet. Aqua World also has a fantastic café with views over the lake where there are windsurfing races four times a year.</div>\n<div class=\"rc-item\"><b>C Calypso Park</b>: Calypso Park, which is only closed from 25 December to 2 January, is the oldest waterpark in the area. There are four different swimming pools and a fantastic waterfall. If you visit next month, you'll be among the first to try Storm Pool. It's an exciting ride that makes you feel like you're in a small sailing boat at sea. Many schools bring big classes of children to Calypso Park, so it’s best to arrive early morning or late afternoon if you don't like rides that get busy.</div>\n</div>",
         "questions": [
           {
             "n": 7,
@@ -1852,7 +1852,7 @@ window.TEST2_PAPERS = {
         "id": "R3",
         "name": "Part 3 长文阅读",
         "instruction": "For each question, choose the correct answer.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The message in a bottle that travelled the oceans</h3>\n<p>Last summer, Tonya Illman and her family were walking along their local beach on Wedge Island, Western Australia. Tonya saw something lying in the sand and went to look at it more closely. It was clearly a very old bottle. She thought it was beautiful, and picked it up to show her family. They agreed it probably got there in a storm.</p>\n<p>Then the family noticed there was a piece of yellow paper inside the bottle. When they took it out of the bottle, they couldn't believe there were words written on it. The bottle had a cork top and the paper inside was still quite dry. Tonya looked at the message and could see it was in German.</p>\n<p>Ross Anderson from the nearby museum told the family that the bottle was part of a German project. He explained that thousands of bottles were thrown from ships between 1864 and 1933, to see where the sea carried them. Tonya’s bottle was the 663rd to be found, and the first one since 1934.</p>\n<p>The note in Tonya’s bottle gave the date (1886) and the place where the bottle was thrown into the water (the Indian Ocean, 950 kilometres away). On the other side of the note was a form asking when and where the bottle was found, together with a return address in Hamburg, Germany. The family decided the bottle and note were too important to keep at home, so have lent them to Ross Anderson’s museum for others to see.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The message in a bottle that travelled the oceans</h3>\n<p>Last summer, Tonya Illman and her family were walking along their local beach on Wedge Island, Western Australia. Tonya saw something lying in the sand and went to look at it more closely. It was clearly a very old bottle. She thought it was beautiful, and picked it up to show her family. They agreed it probably got there in a storm.</p>\n<p>Then the family noticed there was a piece of yellow paper inside the bottle. When they took it out of the bottle, they couldn't believe there were words written on it. The bottle had a cork top and the paper inside was still quite dry. Tonya looked at the message and could see it was in German.</p>\n<p>Ross Anderson from the nearby museum told the family that the bottle was part of a German project. He explained that thousands of bottles were thrown from ships between 1864 and 1933, to see where the sea carried them. Tonya’s bottle was the 663rd to be found, and the first one since 1934.</p>\n<p>The note in Tonya’s bottle gave the date (1886) and the place where the bottle was thrown into the water (the Indian Ocean, 950 kilometres away). On the other side of the note was a form asking when and where the bottle was found, together with a return address in Hamburg, Germany. The family decided the bottle and note were too important to keep at home, so have lent them to Ross Anderson’s museum for others to see.</p>\n</div>",
         "questions": [
           {
             "n": 14,
@@ -1941,7 +1941,7 @@ window.TEST2_PAPERS = {
         "id": "R4",
         "name": "Part 4 完形选择",
         "instruction": "For each question, choose the correct answer.",
-        "textHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The Beatles</h3>\n<p>The Beatles were an English rock band that started in Liverpool, England, in 1960. The four <b>(19)</b> ..... of the band were John Lennon, Paul McCartney, George Harrison and Ringo Starr. They were one of the most successful groups in the <b>(20)</b> ..... of modern music.</p>\n<p>By 1966, the Beatles had millions of fans, and it was difficult for them to find anywhere with enough space for their concerts. That year, they gave the first ever stadium rock concert at Shea Stadium in America, in front of around 50,000 fans. The crowd <b>(21)</b> ..... so much noise that afterwards the Beatles said they couldn't <b>(22)</b> ..... themselves playing.</p>\n<p>Music lovers still <b>(23)</b> ..... about how important the Beatles were. They were the first British band to write their own songs, and their music <b>(24)</b> ..... the way pop music sounded.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The Beatles</h3>\n<p>The Beatles were an English rock band that started in Liverpool, England, in 1960. The four <b>(19)</b> ..... of the band were John Lennon, Paul McCartney, George Harrison and Ringo Starr. They were one of the most successful groups in the <b>(20)</b> ..... of modern music.</p>\n<p>By 1966, the Beatles had millions of fans, and it was difficult for them to find anywhere with enough space for their concerts. That year, they gave the first ever stadium rock concert at Shea Stadium in America, in front of around 50,000 fans. The crowd <b>(21)</b> ..... so much noise that afterwards the Beatles said they couldn't <b>(22)</b> ..... themselves playing.</p>\n<p>Music lovers still <b>(23)</b> ..... about how important the Beatles were. They were the first British band to write their own songs, and their music <b>(24)</b> ..... the way pop music sounded.</p>\n</div>",
         "questions": [
           {
             "n": 19,
@@ -2046,7 +2046,7 @@ window.TEST2_PAPERS = {
         "id": "R5",
         "name": "Part 5 开放完形",
         "instruction": "For each question, write the correct answer. Write one word for each gap.",
-        "textHtml": "<div class=\"reading-article\">\n<p><b>From:</b> Jaime<br/><b>To:</b> Lena</p>\n<p>Have you got the new email about our class trip to (0) [THE] Science Museum next Thursday? The time we have <b>(25)</b> ..... meet at school has changed. It <b>(26)</b> ..... now at 9 a.m.</p>\n<p>I think it will be a really good trip. <b>(27)</b> ..... you think we should take some sandwiches with us? I know we can get drinks in the museum, <b>(28)</b> ..... I’m not sure they sell food.</p>\n<p><b>(29)</b> ..... you like, I can come to your house at 8:30 on Thursday and we can walk to school together. Write back and let <b>(30)</b> ..... know!</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<p><b>From:</b> Jaime<br/><b>To:</b> Lena</p>\n<p>Have you got the new email about our class trip to (0) [THE] Science Museum next Thursday? The time we have <b>(25)</b> ..... meet at school has changed. It <b>(26)</b> ..... now at 9 a.m.</p>\n<p>I think it will be a really good trip. <b>(27)</b> ..... you think we should take some sandwiches with us? I know we can get drinks in the museum, <b>(28)</b> ..... I’m not sure they sell food.</p>\n<p><b>(29)</b> ..... you like, I can come to your house at 8:30 on Thursday and we can walk to school together. Write back and let <b>(30)</b> ..... know!</p>\n</div>",
         "questions": [
           {
             "n": 25,

@@ -13,7 +13,7 @@ const state = {
   currentPart: 0, startedAt: null, results: null,
   mode: 'formal', moduleDeadlines: {}, timeWarned: {}, closedModules: {},
   role: 'student', currentView: 'home', resultId: null,
-  audioSources: [], audioSourceIndex: 0, audioReady: false, audioFailed: false
+  audioSources: [], audioSourceIndex: 0, audioReady: false, audioFailed: false, audioBuffering: false
 };
 if (typeof window !== 'undefined') window.state = state;
 
@@ -31,7 +31,25 @@ function fmtTime(sec){
   sec=Math.max(0, Math.floor(sec||0));
   return `${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`;
 }
-function normText(s){return String(s||'').trim().toLowerCase().replace(/\s+/g,' ').replace(/[.!,。]/g,'')}
+function normText(s){
+  let str = String(s||'').trim().toLowerCase()
+    .replace(/[£$€¥]/g, '')
+    .replace(/[’']/g, "'")
+    .replace(/[“”"]/g, '')
+    .replace(/[.!,?，。、:;]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const numWords = {
+    'zero':'0','one':'1','two':'2','three':'3','four':'4',
+    'five':'5','six':'6','seven':'7','eight':'8','nine':'9',
+    'ten':'10','eleven':'11','twelve':'12','thirteen':'13',
+    'fourteen':'14','fifteen':'15','sixteen':'16','seventeen':'17',
+    'eighteen':'18','nineteen':'19','twenty':'20','thirty':'30',
+    'forty':'40','fifty':'50','sixty':'60','seventy':'70',
+    'eighty':'80','ninety':'90'
+  };
+  return numWords[str] || str;
+}
 
 function getExamData(exam){
   return (typeof DATA !== 'undefined' && DATA[exam || state.exam]) || null;
@@ -77,7 +95,17 @@ const App = {
     if(dialog?.open) dialog.close();
     if(accepted) action?.();
   },
+  stopAudio(){
+    try{
+      const player=$('player');
+      if(player && !player.paused) player.pause();
+    }catch(e){}
+    state.hearOpen=null;
+    state.audioBuffering=false;
+    App.updateListenUI();
+  },
   show(name, options={}){
+    if(name!=='exam') App.stopAudio();
     VIEWS.forEach(v=>{
       const el=$('view-'+v);
       if(el) el.classList.toggle('hidden', v!==name);
@@ -526,6 +554,7 @@ const App = {
     App.updateProgress();
   },
   gotoPart(i, options={}){
+    App.stopAudio();
     const parts=App.activeParts(), target=parts[i];
     if(!target || i<0 || i>=parts.length) return;
     const current=App.currentPart();
@@ -538,6 +567,17 @@ const App = {
       const currentIsModuleEnd=!parts.slice(state.currentPart+1).some(p=>p.module===current.module);
       if(!options.force && !currentIsModuleEnd){
         toast('正式模考请先完成当前模块，再进入下一模块',3000,'error'); return;
+      }
+      if(!options.confirmed && !options.force){
+        const modNames={listening:'听力',reading:'阅读',writing:'写作',speaking:'口语'};
+        App.askConfirm({
+          title:'确认进入下一模块？',
+          message:`您即将结束【${modNames[current.module]||current.module}】模块。正式模考模式下，进入下一模块后将无法返回修改本模块答案。`,
+          confirmText:'确认进入',
+          danger:true,
+          onConfirm:()=>App.gotoPart(i, {...options, confirmed:true})
+        });
+        return;
       }
       state.closedModules[current.module]=true;
     }
@@ -573,7 +613,8 @@ const App = {
       <div><b>${p.module==='speaking'?'请与老师面对面完成口语任务':'请在纸质答题卡上完成写作'}</b>
       <p>本页面只展示题目，不会收集文字、图片、文件或录音。完成后点击页面底部按钮继续。</p></div>
     </div>`;
-    if(p.passageHtml) html+=`<div class="passage md">${p.passageHtml}</div>`;
+    const passageHtml = p.passageHtml || p.textHtml;
+    if(passageHtml) html+=`<div class="passage md">${passageHtml}</div>`;
     else if(p.passage) html+=`<div class="passage" style="white-space:pre-wrap">${escapeHtml(p.passage)}</div>`;
     p.questions.forEach(q=>{
       const key=App.qKey(p.module,p.id,q.n);
@@ -708,12 +749,16 @@ const App = {
     const p=App.currentPart(); if(!p||!p.audioPart) return;
     const used=App.partHeard(p.id), left=App.listensLeft(p.id), lim=App.listenLimit();
     const btn=$('btnPlayPart');
+    if(!btn) return;
     if(state.audioFailed){
       $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 音频未就绪，播放次数未扣除`;
       btn.disabled=true; btn.textContent='音频不可用';
     }else if(!state.audioReady){
       $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 正在准备音频`;
       btn.disabled=true; btn.textContent='正在加载…';
+    }else if(state.audioBuffering){
+      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 正在缓冲音频…`;
+      btn.disabled=true; btn.textContent='正在缓冲…';
     }else if(left<=0){
       $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 次数已用完`;
       btn.disabled=true; btn.textContent='次数已用完';
@@ -733,10 +778,15 @@ const App = {
     const player=$('player');
     if(state.audioFailed){ toast('音频未加载成功，请点击“重新加载音频”',3000,'error'); return }
     if(!state.audioReady){ toast('音频仍在加载，请稍候',2200); return }
+    if(state.audioBuffering){ toast('音频正在缓冲，请稍候',2000); return }
     if(state.hearOpen===p.id){ player.play().catch(()=>{}); App.updateListenUI(); return }
     if(App.listensLeft(p.id)<=0){ toast('本部分听力次数已用完'); return }
     App.seekPart(false);
+    state.audioBuffering=true;
+    App.updateListenUI();
     player.play().catch(err=>{
+      state.audioBuffering=false;
+      App.updateListenUI();
       if(err && (err.name==='AbortError'||/interrupted by a call to pause/i.test(err.message))) return;
       App.setAudioFailed('浏览器未能播放音频，本次未扣除播放次数');
     });
@@ -822,6 +872,7 @@ const App = {
     return App.activeParts().filter(p=>App.isDisplayOnlyPart(p)&&!state.offlineCompleted[App.offlineKey(p)]);
   },
   openCheck(){
+    App.stopAudio();
     const parts=App.activeParts(), {done,total}=App.answeredCount();
     const offlineParts=parts.filter(p=>App.isDisplayOnlyPart(p));
     const offlineDone=offlineParts.filter(p=>state.offlineCompleted[App.offlineKey(p)]).length;
@@ -905,6 +956,7 @@ const App = {
     return false;
   },
   doSubmit(){
+    App.stopAudio();
     toast('正在评分…');
     const parts=App.activeParts();
     const byModule={}, typeStats={}, wrongs=[];
@@ -1111,10 +1163,44 @@ const App = {
       : '<div class="hint">客观题全部正确或未作答客观题。</div>';
     html+=`</div></details></div>
       <div class="btn-row report-actions">
-        <button class="btn" onclick="window.print()">打印 / 保存为 PDF</button>
+        <button class="btn" onclick="App.exportWord()" title="导出带标准教师批改卡与充足评语空位的 Word (.docx) 格式成绩单">📄 导出 Word 成绩单 (.docx)</button>
+        <button class="btn ghost" onclick="window.print()">打印 / 保存为 PDF</button>
         <button class="btn ghost" onclick="App.show('home')">返回首页</button>
       </div>`;
     $('reportPanel').innerHTML=html;
+  },
+  exportWord(){
+    if (!window.WordReportExporter) {
+      toast('Word 导出模块尚未就绪，请刷新重试', 3000, 'error');
+      return;
+    }
+    const d = DATA[state.exam], r = state.results || {};
+    const paperId = state.paperId || r.paperId || 'test1';
+    const pMeta = getPaperMeta(state.exam, paperId);
+    const scores = {};
+    ['listening', 'reading'].forEach(id => {
+      const mod = d.modules.find(m => m.id === id), info = r.byModule?.[id];
+      scores[id] = { raw: info?.raw ?? 0, total: mod?.maxRaw ?? info?.total ?? 0, ...App.scoreMeta(id, info?.raw ?? 0) };
+    });
+
+    const exportData = {
+      exam: state.exam,
+      paperId,
+      paperMeta: pMeta,
+      student: state.student || {},
+      results: r,
+      DATA,
+      scores
+    };
+
+    const fileName = `${state.student?.name || '考生'}_${state.exam}_${pMeta.label || paperId}_模考成绩单.docx`;
+    try {
+      WordReportExporter.downloadDocx(exportData, fileName);
+      toast('Word 成绩单 (.docx) 导出成功，已预留充足教师批改空位', 3000, 'ok');
+    } catch (e) {
+      console.error('Word export error:', e);
+      toast('Word 成绩单导出失败，请重试', 3000, 'error');
+    }
   },
   restart(){
     App.askConfirm({title:'开始新的考试？',message:'当前报告已保存在本机历史记录中。继续后将返回首页。',confirmText:'返回首页',onConfirm:()=>{
@@ -1158,21 +1244,53 @@ function bindAudio(){
     const p=App.currentPart(); if(p?.audioPart){try{player.currentTime=p.audioStart??0}catch(e){}}
   });
   player.addEventListener('error', ()=>App.handleAudioError());
+  player.addEventListener('waiting', ()=>{
+    state.audioBuffering=true;
+    App.updateListenUI();
+  });
+  player.addEventListener('seeking', ()=>{
+    state.audioBuffering=true;
+    App.updateListenUI();
+  });
+  player.addEventListener('canplay', ()=>{
+    state.audioBuffering=false;
+    App.updateListenUI();
+  });
   player.addEventListener('play', ()=>{
     const p=App.currentPart(); if(!p||!p.audioPart) return;
+    if(state.hearOpen!==p.id && App.listensLeft(p.id)<=0){
+      player.pause(); App.updateListenUI(); return;
+    }
+    state.audioBuffering=true;
+    App.updateListenUI();
+  });
+  player.addEventListener('playing', ()=>{
+    state.audioBuffering=false;
+    const p=App.currentPart(); if(!p||!p.audioPart) return;
     if(state.hearOpen!==p.id){
-      if(App.listensLeft(p.id)<=0){ player.pause(); App.updateListenUI(); return }
-      state.listenCounts[p.id]=App.partHeard(p.id)+1; state.hearOpen=p.id;
+      if(App.listensLeft(p.id)<=0){ player.pause(); App.updateListenUI(); return; }
+      state.listenCounts[p.id]=App.partHeard(p.id)+1;
+      state.hearOpen=p.id;
       App.saveDraft();
     }
     App.updateListenUI();
   });
-  player.addEventListener('pause', ()=>App.updateListenUI());
-  player.addEventListener('ended', ()=>{ state.hearOpen=null; App.updateListenUI() });
+  player.addEventListener('pause', ()=>{
+    state.audioBuffering=false;
+    App.updateListenUI();
+  });
+  player.addEventListener('ended', ()=>{
+    state.audioBuffering=false;
+    state.hearOpen=null;
+    App.updateListenUI();
+  });
   player.addEventListener('timeupdate', ()=>{
     const p=App.currentPart(); if(!p||!p.audioPart) return;
     if(p.audioEnd!=null && player.currentTime>=p.audioEnd && !player.paused){
-      player.pause(); state.hearOpen=null; App.updateListenUI();
+      player.pause();
+      state.hearOpen=null;
+      state.audioBuffering=false;
+      App.updateListenUI();
     }
   });
 }

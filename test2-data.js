@@ -23,7 +23,7 @@ window.TEST2_PAPERS = {
           {
             "n": 1,
             "type": "mc",
-            "stem": "告示 / 邮件：Becky to Amelia: Class trip to theatre.",
+            "stem": "",
             "image": "assets/test2/pet_r1_q1.png",
             "options": [
               "Becky really liked the tour of the theatre but enjoyed the performance less.",
@@ -40,7 +40,7 @@ window.TEST2_PAPERS = {
           {
             "n": 2,
             "type": "mc",
-            "stem": "短信：Mum, I'm going to the shopping centre...",
+            "stem": "",
             "image": "assets/test2/pet_r1_q2.png",
             "options": [
               "ask his mum to buy a skateboard for Ben.",
@@ -57,7 +57,7 @@ window.TEST2_PAPERS = {
           {
             "n": 3,
             "type": "mc",
-            "stem": "便条：Rob to friend: Interested in buying computer game Dragon...",
+            "stem": "",
             "image": "assets/test2/pet_r1_q3.png",
             "options": [
               "giving information about a computer game he's played.",
@@ -74,7 +74,7 @@ window.TEST2_PAPERS = {
           {
             "n": 4,
             "type": "mc",
-            "stem": "告示：Roberto's Pizzeria: THIS WEEK ONLY One medium-sized pizza free with every large pizza order.",
+            "stem": "",
             "image": "assets/test2/pet_r1_q4.png",
             "options": [
               "You will get a free pizza if you buy a medium pizza this week.",
@@ -91,7 +91,7 @@ window.TEST2_PAPERS = {
           {
             "n": 5,
             "type": "mc",
-            "stem": "告示：Anna, Don't forget that next week's science club meeting will take place in the physics lab...",
+            "stem": "",
             "image": "assets/test2/pet_r1_q5.png",
             "options": [
               "The location of the science club has been changed for next week.",
@@ -117,7 +117,7 @@ window.TEST2_PAPERS = {
           {
             "n": 6,
             "type": "mc",
-            "stem": "6 Tim wants to share his interest in science fiction with other teenagers. He has good computer skills but his computer is old and doesn't always work well with the latest programs.",
+            "stem": "Tim wants to share his interest in science fiction with other teenagers. He has good computer skills but his computer is old and doesn't always work well with the latest programs.",
             "options": [
               "A",
               "B",
@@ -143,7 +143,7 @@ window.TEST2_PAPERS = {
           {
             "n": 7,
             "type": "mc",
-            "stem": "7 Rosa enjoys playing games on the internet with her friends. She's bored with the space travel games they play and is looking for games set in different periods of history.",
+            "stem": "Rosa enjoys playing games on the internet with her friends. She's bored with the space travel games they play and is looking for games set in different periods of history.",
             "options": [
               "A",
               "B",
@@ -169,7 +169,7 @@ window.TEST2_PAPERS = {
           {
             "n": 8,
             "type": "mc",
-            "stem": "8 Mina plays piano and guitar very well. She now wants to add the songs she writes to the short films that her brother produces. She's good at learning how to use new software.",
+            "stem": "Mina plays piano and guitar very well. She now wants to add the songs she writes to the short films that her brother produces. She's good at learning how to use new software.",
             "options": [
               "A",
               "B",
@@ -195,7 +195,7 @@ window.TEST2_PAPERS = {
           {
             "n": 9,
             "type": "mc",
-            "stem": "9 Fadel is good at painting and loves drawing funny pictures. He wants to do something creative on his home computer but doesn't understand computers very well.",
+            "stem": "Fadel is good at painting and loves drawing funny pictures. He wants to do something creative on his home computer but doesn't understand computers very well.",
             "options": [
               "A",
               "B",
@@ -221,7 +221,7 @@ window.TEST2_PAPERS = {
           {
             "n": 10,
             "type": "mc",
-            "stem": "10 Jeff has played many computer games. He now has an idea for a football game that he would like to create himself, but he'll need easy-to-follow instructions.",
+            "stem": "Jeff has played many computer games. He now has an idea for a football game that he would like to create himself, but he'll need easy-to-follow instructions.",
             "options": [
               "A",
               "B",
@@ -256,7 +256,7 @@ window.TEST2_PAPERS = {
           {
             "n": 11,
             "type": "mc",
-            "stem": "11 What does Tina say about her family's attitude to her climbing?",
+            "stem": "What does Tina say about her family's attitude to her climbing?",
             "options": [
               "A Her mum's disappointed she doesn't like other sports.",
               "B Her mum and dad are keen for her to continue to improve.",
@@ -274,7 +274,7 @@ window.TEST2_PAPERS = {
           {
             "n": 12,
             "type": "mc",
-            "stem": "12 Why does Tina think she is good at climbing?",
+            "stem": "Why does Tina think she is good at climbing?",
             "options": [
               "A She does things slowly and carefully.",
               "B She has the right body shape.",
@@ -292,7 +292,7 @@ window.TEST2_PAPERS = {
           {
             "n": 13,
             "type": "mc",
-            "stem": "13 How does Tina usually feel before she takes part in a competition?",
+            "stem": "How does Tina usually feel before she takes part in a competition?",
             "options": [
               "A worried about making mistakes",
               "B excited about what she might achieve",
@@ -310,7 +310,7 @@ window.TEST2_PAPERS = {
           {
             "n": 14,
             "type": "mc",
-            "stem": "14 What does Tina feel about her regular training?",
+            "stem": "What does Tina feel about her regular training?",
             "options": [
               "A delighted when it becomes challenging",
               "B guilty about how it affects her studies",
@@ -328,7 +328,7 @@ window.TEST2_PAPERS = {
           {
             "n": 15,
             "type": "mc",
-            "stem": "15 What might Tina's brother say about her?",
+            "stem": "What might Tina's brother say about her?",
             "options": [
               "A She learns a lot from other climbers she meets, and talks to them when she's competing.",
               "B She hated being on a high climbing wall at first, but after a while she relaxed and did well.",
@@ -355,7 +355,7 @@ window.TEST2_PAPERS = {
           {
             "n": 16,
             "type": "mc",
-            "stem": "16 选择填入空格 [ 16 ] 的句子",
+            "stem": "选择填入空格 [ 16 ] 的句子",
             "options": [
               "A",
               "B",
@@ -381,7 +381,7 @@ window.TEST2_PAPERS = {
           {
             "n": 17,
             "type": "mc",
-            "stem": "17 选择填入空格 [ 17 ] 的句子",
+            "stem": "选择填入空格 [ 17 ] 的句子",
             "options": [
               "A",
               "B",
@@ -407,7 +407,7 @@ window.TEST2_PAPERS = {
           {
             "n": 18,
             "type": "mc",
-            "stem": "18 选择填入空格 [ 18 ] 的句子",
+            "stem": "选择填入空格 [ 18 ] 的句子",
             "options": [
               "A",
               "B",
@@ -433,7 +433,7 @@ window.TEST2_PAPERS = {
           {
             "n": 19,
             "type": "mc",
-            "stem": "19 选择填入空格 [ 19 ] 的句子",
+            "stem": "选择填入空格 [ 19 ] 的句子",
             "options": [
               "A",
               "B",
@@ -459,7 +459,7 @@ window.TEST2_PAPERS = {
           {
             "n": 20,
             "type": "mc",
-            "stem": "20 选择填入空格 [ 20 ] 的句子",
+            "stem": "选择填入空格 [ 20 ] 的句子",
             "options": [
               "A",
               "B",
@@ -494,7 +494,7 @@ window.TEST2_PAPERS = {
           {
             "n": 21,
             "type": "mc",
-            "stem": "21 For this (21) ....., camels are very useful...",
+            "stem": "For this (21) ....., camels are very useful...",
             "options": [
               "detail",
               "fact",
@@ -512,7 +512,7 @@ window.TEST2_PAPERS = {
           {
             "n": 22,
             "type": "mc",
-            "stem": "22 where water may not be (22) ..... for days.",
+            "stem": "where water may not be (22) ..... for days.",
             "options": [
               "likely",
               "available",
@@ -530,7 +530,7 @@ window.TEST2_PAPERS = {
           {
             "n": 23,
             "type": "mc",
-            "stem": "23 heavy loads over (23) ..... distances.",
+            "stem": "heavy loads over (23) ..... distances.",
             "options": [
               "great",
               "tall",
@@ -548,7 +548,7 @@ window.TEST2_PAPERS = {
           {
             "n": 24,
             "type": "mc",
-            "stem": "24 wide feet help to (24) ..... them from sinking into desert sand.",
+            "stem": "wide feet help to (24) ..... them from sinking into desert sand.",
             "options": [
               "avoid",
               "miss",
@@ -566,7 +566,7 @@ window.TEST2_PAPERS = {
           {
             "n": 25,
             "type": "mc",
-            "stem": "25 take in huge (25) ..... of food and water.",
+            "stem": "take in huge (25) ..... of food and water.",
             "options": [
               "values",
               "numbers",
@@ -584,7 +584,7 @@ window.TEST2_PAPERS = {
           {
             "n": 26,
             "type": "mc",
-            "stem": "26 the water they need is (26) ..... in two bags in their stomachs.",
+            "stem": "the water they need is (26) ..... in two bags in their stomachs.",
             "options": [
               "brought",
               "held",
@@ -676,7 +676,7 @@ window.TEST2_PAPERS = {
           {
             "n": 1,
             "type": "mc",
-            "stem": "1 What does the boy want his friend to bring to school tomorrow?",
+            "stem": "What does the boy want his friend to bring to school tomorrow?",
             "image": "assets/test2/pet_l1_q1.png",
             "options": [
               "A",
@@ -693,7 +693,7 @@ window.TEST2_PAPERS = {
           {
             "n": 2,
             "type": "mc",
-            "stem": "2 Which sport is the girl going to watch on TV later?",
+            "stem": "Which sport is the girl going to watch on TV later?",
             "image": "assets/test2/pet_l1_q2.png",
             "options": [
               "A",
@@ -710,7 +710,7 @@ window.TEST2_PAPERS = {
           {
             "n": 3,
             "type": "mc",
-            "stem": "3 What did the boy do on holiday?",
+            "stem": "What did the boy do on holiday?",
             "image": "assets/test2/pet_l1_q3.png",
             "options": [
               "A",
@@ -727,7 +727,7 @@ window.TEST2_PAPERS = {
           {
             "n": 4,
             "type": "mc",
-            "stem": "4 Which activity did the girl enjoy the most?",
+            "stem": "Which activity did the girl enjoy the most?",
             "image": "assets/test2/pet_l1_q4.png",
             "options": [
               "A",
@@ -744,7 +744,7 @@ window.TEST2_PAPERS = {
           {
             "n": 5,
             "type": "mc",
-            "stem": "5 What time is the film?",
+            "stem": "What time is the film?",
             "image": "assets/test2/pet_l1_q5.png",
             "options": [
               "A",
@@ -761,7 +761,7 @@ window.TEST2_PAPERS = {
           {
             "n": 6,
             "type": "mc",
-            "stem": "6 Which TV programme did the girl enjoy most?",
+            "stem": "Which TV programme did the girl enjoy most?",
             "image": "assets/test2/pet_l1_q6.png",
             "options": [
               "A",
@@ -778,7 +778,7 @@ window.TEST2_PAPERS = {
           {
             "n": 7,
             "type": "mc",
-            "stem": "7 Which photo will the boy send the girl?",
+            "stem": "Which photo will the boy send the girl?",
             "image": "assets/test2/pet_l1_q7.png",
             "options": [
               "A",
@@ -806,7 +806,7 @@ window.TEST2_PAPERS = {
           {
             "n": 8,
             "type": "mc",
-            "stem": "8 You will hear two friends talking about a school trip to a theatre. What do they agree about?",
+            "stem": "You will hear two friends talking about a school trip to a theatre. What do they agree about?",
             "options": [
               "A Learning about the history of the building was useful.",
               "B Understanding the play was rather challenging.",
@@ -822,7 +822,7 @@ window.TEST2_PAPERS = {
           {
             "n": 9,
             "type": "mc",
-            "stem": "9 You will hear two friends talking about studying Geography. How does the boy feel about it?",
+            "stem": "You will hear two friends talking about studying Geography. How does the boy feel about it?",
             "options": [
               "A surprised that he can understand everything",
               "B certain that he could work much harder",
@@ -838,7 +838,7 @@ window.TEST2_PAPERS = {
           {
             "n": 10,
             "type": "mc",
-            "stem": "10 You will hear a boy telling a friend about his new bedroom. How does he feel about it?",
+            "stem": "You will hear a boy telling a friend about his new bedroom. How does he feel about it?",
             "options": [
               "A disappointed with the size",
               "B upset with how it’s decorated",
@@ -854,7 +854,7 @@ window.TEST2_PAPERS = {
           {
             "n": 11,
             "type": "mc",
-            "stem": "11 You will hear two friends talking about jobs they might do in the future. What do they agree about?",
+            "stem": "You will hear two friends talking about jobs they might do in the future. What do they agree about?",
             "options": [
               "A Indoor work is unhealthy.",
               "B Helping others is important.",
@@ -870,7 +870,7 @@ window.TEST2_PAPERS = {
           {
             "n": 12,
             "type": "mc",
-            "stem": "12 You will hear a brother and sister talking about their recent holiday. What did they both like about it?",
+            "stem": "You will hear a brother and sister talking about their recent holiday. What did they both like about it?",
             "options": [
               "A the food",
               "B the location",
@@ -886,7 +886,7 @@ window.TEST2_PAPERS = {
           {
             "n": 13,
             "type": "mc",
-            "stem": "13 You will hear a girl telling a friend about a new website she’s used. What does she say about it?",
+            "stem": "You will hear a girl telling a friend about a new website she’s used. What does she say about it?",
             "options": [
               "A It's easy to spend a long time looking at it.",
               "B It should include a wider range of topics.",
@@ -909,12 +909,12 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 1187,
         "audioEnd": 1474,
-        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Castle visit</h3>\n<p>You will hear a student called Noah giving a class presentation about a visit he made to a castle.</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Castle visit</h3>\n<p class=\"md-sub\">You will hear a student called Noah giving a class presentation about a visit he made to a castle.</p>\n<ul style=\"margin:0;padding-left:18px\">\n<li style=\"margin:8px 0\">Noah was surprised about the size of the <b>(14)</b> ____________ in the castle.</li>\n<li style=\"margin:8px 0\">One person who used to live in the castle was famous as a <b>(15)</b> ____________ .</li>\n<li style=\"margin:8px 0\">For nearly fifty years local farmers kept their <b>(16)</b> ____________ in the castle.</li>\n<li style=\"margin:8px 0\">Noah’s favourite room in the castle is the <b>(17)</b> ____________ .</li>\n<li style=\"margin:8px 0\">From the top of the tower, Noah could see some <b>(18)</b> ____________ out at sea.</li>\n<li style=\"margin:8px 0\">For more information about the castle, go to www.<b>(19)</b> ____________ .com</li>\n</ul>\n</div>",
         "questions": [
           {
             "n": 14,
             "type": "text",
-            "stem": "14 Noah was surprised about the size of the (14) _____ in the castle.",
+            "stem": "(14)",
             "answers": [
               "windows",
               "window"
@@ -924,7 +924,7 @@ window.TEST2_PAPERS = {
           {
             "n": 15,
             "type": "text",
-            "stem": "15 One person who used to live in the castle was famous as a (15) _____ .",
+            "stem": "(15)",
             "answers": [
               "painter",
               "artist"
@@ -934,7 +934,7 @@ window.TEST2_PAPERS = {
           {
             "n": 16,
             "type": "text",
-            "stem": "16 For nearly fifty years local farmers kept their (16) _____ in the castle.",
+            "stem": "(16)",
             "answers": [
               "horses",
               "horse"
@@ -944,7 +944,7 @@ window.TEST2_PAPERS = {
           {
             "n": 17,
             "type": "text",
-            "stem": "17 Noah’s favourite room in the castle is the (17) _____ .",
+            "stem": "(17)",
             "answers": [
               "kitchen",
               "kitchens"
@@ -954,7 +954,7 @@ window.TEST2_PAPERS = {
           {
             "n": 18,
             "type": "text",
-            "stem": "18 From the top of the tower, Noah could see some (18) _____ out at sea.",
+            "stem": "(18)",
             "answers": [
               "dolphins",
               "dolphin"
@@ -964,7 +964,7 @@ window.TEST2_PAPERS = {
           {
             "n": 19,
             "type": "text",
-            "stem": "19 For more information about the castle, go to www.(19) _____ .com",
+            "stem": "(19)",
             "answers": [
               "tradell"
             ],
@@ -984,7 +984,7 @@ window.TEST2_PAPERS = {
           {
             "n": 20,
             "type": "mc",
-            "stem": "20 In her photos, Ellen tries to show people's",
+            "stem": "In her photos, Ellen tries to show people's",
             "options": [
               "A different feelings.",
               "B individual characters.",
@@ -1000,7 +1000,7 @@ window.TEST2_PAPERS = {
           {
             "n": 21,
             "type": "mc",
-            "stem": "21 What does Ellen say about taking photos of her sisters?",
+            "stem": "What does Ellen say about taking photos of her sisters?",
             "options": [
               "A They're easy to work with.",
               "B They make useful suggestions.",
@@ -1016,7 +1016,7 @@ window.TEST2_PAPERS = {
           {
             "n": 22,
             "type": "mc",
-            "stem": "22 Why does Ellen usually take photos in the city centre?",
+            "stem": "Why does Ellen usually take photos in the city centre?",
             "options": [
               "A She finds it interesting.",
               "B Someone recommended it.",
@@ -1032,7 +1032,7 @@ window.TEST2_PAPERS = {
           {
             "n": 23,
             "type": "mc",
-            "stem": "23 Ellen's parents have helped her with her photography by",
+            "stem": "Ellen's parents have helped her with her photography by",
             "options": [
               "A lending her equipment.",
               "B taking her to see exhibitions.",
@@ -1048,7 +1048,7 @@ window.TEST2_PAPERS = {
           {
             "n": 24,
             "type": "mc",
-            "stem": "24 What does Ellen say about the photo that won a recent competition?",
+            "stem": "What does Ellen say about the photo that won a recent competition?",
             "options": [
               "A She wanted to do something unusual.",
               "B She knew which type of subject would be best.",
@@ -1064,7 +1064,7 @@ window.TEST2_PAPERS = {
           {
             "n": 25,
             "type": "mc",
-            "stem": "25 What does Ellen hope to do in the future?",
+            "stem": "What does Ellen hope to do in the future?",
             "options": [
               "A set up a photography club",
               "B attend photography classes",
@@ -1126,7 +1126,7 @@ window.TEST2_PAPERS = {
     "audioAlt": "20240512KET第006套.mp3",
     "listenLimit": 2,
     "timing": {
-      "listening": 2100,
+      "listening": 1800,
       "reading": 3600,
       "writing": 0,
       "speaking": 600
@@ -1144,7 +1144,7 @@ window.TEST2_PAPERS = {
           {
             "n": 1,
             "type": "mc",
-            "stem": "1 Which homework is Brian doing now?",
+            "stem": "Which homework is Brian doing now?",
             "image": "assets/test2/ket_l1_q1.png",
             "options": [
               "A",
@@ -1161,7 +1161,7 @@ window.TEST2_PAPERS = {
           {
             "n": 2,
             "type": "mc",
-            "stem": "2 What does the girl want to buy?",
+            "stem": "What does the girl want to buy?",
             "image": "assets/test2/ket_l1_q2.png",
             "options": [
               "A",
@@ -1178,7 +1178,7 @@ window.TEST2_PAPERS = {
           {
             "n": 3,
             "type": "mc",
-            "stem": "3 What was the weather like on Sunday?",
+            "stem": "What was the weather like on Sunday?",
             "image": "assets/test2/ket_l1_q3.png",
             "options": [
               "A",
@@ -1195,7 +1195,7 @@ window.TEST2_PAPERS = {
           {
             "n": 4,
             "type": "mc",
-            "stem": "4 What does the boy still need to collect information about?",
+            "stem": "What does the boy still need to collect information about?",
             "image": "assets/test2/ket_l1_q4.png",
             "options": [
               "A",
@@ -1212,7 +1212,7 @@ window.TEST2_PAPERS = {
           {
             "n": 5,
             "type": "mc",
-            "stem": "5 Where are the friends going to meet?",
+            "stem": "Where are the friends going to meet?",
             "image": "assets/test2/ket_l1_q5.png",
             "options": [
               "A",
@@ -1236,12 +1236,12 @@ window.TEST2_PAPERS = {
         "audioPart": true,
         "audioStart": 380,
         "audioEnd": 636,
-        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">New after-school activity</h3>\n<p>You will hear a headteacher telling her students about a new after-school activity.</p>\n<p><b>Name:</b> Safer Cycling</p>\n</div>",
+        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">New after-school activity</h3>\n<p class=\"md-sub\">You will hear a headteacher telling her students about a new after-school activity.</p>\n<ul style=\"margin:0;padding-left:18px\">\n<li style=\"margin:8px 0\"><b>Name:</b> Safer Cycling</li>\n<li style=\"margin:8px 0\"><b>Day:</b> (6) ____________</li>\n<li style=\"margin:8px 0\"><b>Wear:</b> (7) ____________</li>\n<li style=\"margin:8px 0\"><b>Time lesson begins:</b> (8) ____________ p.m.</li>\n<li style=\"margin:8px 0\"><b>Teacher's name:</b> (9) Mr ____________</li>\n<li style=\"margin:8px 0\"><b>Name of DVD:</b> (10) The ____________ and You</li>\n</ul>\n</div>",
         "questions": [
           {
             "n": 6,
             "type": "text",
-            "stem": "6 Day: (6) _____",
+            "stem": "Day",
             "answers": [
               "tuesday"
             ],
@@ -1250,7 +1250,7 @@ window.TEST2_PAPERS = {
           {
             "n": 7,
             "type": "text",
-            "stem": "7 Wear: (7) _____",
+            "stem": "Wear",
             "answers": [
               "trainers",
               "sneakers",
@@ -1261,7 +1261,7 @@ window.TEST2_PAPERS = {
           {
             "n": 8,
             "type": "text",
-            "stem": "8 Time lesson begins: (8) _____ p.m.",
+            "stem": "Time lesson begins (p.m.)",
             "answers": [
               "3:25",
               "3.25",
@@ -1273,7 +1273,7 @@ window.TEST2_PAPERS = {
           {
             "n": 9,
             "type": "text",
-            "stem": "9 Teacher's name: (9) Mr _____",
+            "stem": "Teacher's name (Mr)",
             "answers": [
               "purslow"
             ],
@@ -1282,7 +1282,7 @@ window.TEST2_PAPERS = {
           {
             "n": 10,
             "type": "text",
-            "stem": "10 Name of DVD: (10) The _____ and You",
+            "stem": "Name of DVD (The ... and You)",
             "answers": [
               "road",
               "roads"
@@ -1304,7 +1304,7 @@ window.TEST2_PAPERS = {
           {
             "n": 11,
             "type": "mc",
-            "stem": "11 When did they go to the concert?",
+            "stem": "When did they go to the concert?",
             "options": [
               "A Tuesday",
               "B Wednesday",
@@ -1320,7 +1320,7 @@ window.TEST2_PAPERS = {
           {
             "n": 12,
             "type": "mc",
-            "stem": "12 Why did Nina go to the concert?",
+            "stem": "Why did Nina go to the concert?",
             "options": [
               "A It was a friend’s birthday.",
               "B Her parents gave her a ticket.",
@@ -1336,7 +1336,7 @@ window.TEST2_PAPERS = {
           {
             "n": 13,
             "type": "mc",
-            "stem": "13 Which musician did Jake like most?",
+            "stem": "Which musician did Jake like most?",
             "options": [
               "A the keyboard player",
               "B the guitar player",
@@ -1352,7 +1352,7 @@ window.TEST2_PAPERS = {
           {
             "n": 14,
             "type": "mc",
-            "stem": "14 Nina and Jake agree that the singer was",
+            "stem": "Nina and Jake agree that the singer was",
             "options": [
               "A strange.",
               "B quiet.",
@@ -1368,7 +1368,7 @@ window.TEST2_PAPERS = {
           {
             "n": 15,
             "type": "mc",
-            "stem": "15 What did Jake do after the concert?",
+            "stem": "What did Jake do after the concert?",
             "options": [
               "A He went to a café.",
               "B He cycled home.",
@@ -1395,7 +1395,7 @@ window.TEST2_PAPERS = {
           {
             "n": 16,
             "type": "mc",
-            "stem": "16 You will hear a boy leaving a phone message for his friend. Why is he leaving the message?",
+            "stem": "You will hear a boy leaving a phone message for his friend. Why is he leaving the message?",
             "options": [
               "A to offer to help",
               "B to give instructions",
@@ -1411,7 +1411,7 @@ window.TEST2_PAPERS = {
           {
             "n": 17,
             "type": "mc",
-            "stem": "17 You will hear a teacher talking to his students about a class history project. What does he want them to do?",
+            "stem": "You will hear a teacher talking to his students about a class history project. What does he want them to do?",
             "options": [
               "A buy something",
               "B look for something",
@@ -1427,7 +1427,7 @@ window.TEST2_PAPERS = {
           {
             "n": 18,
             "type": "mc",
-            "stem": "18 You will hear a boy talking to his classmate about joining a swimming club. Why does he want to join the club?",
+            "stem": "You will hear a boy talking to his classmate about joining a swimming club. Why does he want to join the club?",
             "options": [
               "A to make friends",
               "B to swim faster",
@@ -1443,7 +1443,7 @@ window.TEST2_PAPERS = {
           {
             "n": 19,
             "type": "mc",
-            "stem": "19 You will hear a girl telling her brother about her school trip to a castle. What does she say about the castle?",
+            "stem": "You will hear a girl telling her brother about her school trip to a castle. What does she say about the castle?",
             "options": [
               "A She sometimes felt afraid there.",
               "B It taught her a lot about history.",
@@ -1459,7 +1459,7 @@ window.TEST2_PAPERS = {
           {
             "n": 20,
             "type": "mc",
-            "stem": "20 You will hear a boy telling his friend about a walk he did. What does he say about the walk?",
+            "stem": "You will hear a boy telling his friend about a walk he did. What does he say about the walk?",
             "options": [
               "A It was very hot.",
               "B It was very long.",
@@ -1487,7 +1487,7 @@ window.TEST2_PAPERS = {
           {
             "n": 21,
             "type": "mc",
-            "stem": "21 aunt",
+            "stem": "aunt",
             "options": [
               "A",
               "B",
@@ -1513,7 +1513,7 @@ window.TEST2_PAPERS = {
           {
             "n": 22,
             "type": "mc",
-            "stem": "22 mum",
+            "stem": "mum",
             "options": [
               "A",
               "B",
@@ -1539,7 +1539,7 @@ window.TEST2_PAPERS = {
           {
             "n": 23,
             "type": "mc",
-            "stem": "23 dad",
+            "stem": "dad",
             "options": [
               "A",
               "B",
@@ -1565,7 +1565,7 @@ window.TEST2_PAPERS = {
           {
             "n": 24,
             "type": "mc",
-            "stem": "24 brother",
+            "stem": "brother",
             "options": [
               "A",
               "B",
@@ -1591,7 +1591,7 @@ window.TEST2_PAPERS = {
           {
             "n": 25,
             "type": "mc",
-            "stem": "25 sister",
+            "stem": "sister",
             "options": [
               "A",
               "B",
@@ -1625,7 +1625,7 @@ window.TEST2_PAPERS = {
           {
             "n": 1,
             "type": "mc",
-            "stem": "告示：This camera uses two AA batteries (not included).",
+            "stem": "",
             "image": "assets/test2/ket_r1_q1.png",
             "options": [
               "You get some spare batteries when you buy this camera.",
@@ -1693,7 +1693,7 @@ window.TEST2_PAPERS = {
           {
             "n": 5,
             "type": "mc",
-            "stem": "告示：Football match",
+            "stem": "",
             "image": "assets/test2/ket_r1_q5.png",
             "options": [
               "Today's football match will be at another school.",
@@ -1736,7 +1736,7 @@ window.TEST2_PAPERS = {
           {
             "n": 7,
             "type": "mc",
-            "stem": "7 Which waterpark has watersport competitions that visitors can watch?",
+            "stem": "Which waterpark has watersport competitions that visitors can watch?",
             "options": [
               "A",
               "B",
@@ -1752,7 +1752,7 @@ window.TEST2_PAPERS = {
           {
             "n": 8,
             "type": "mc",
-            "stem": "8 Which waterpark is visited by large groups?",
+            "stem": "Which waterpark is visited by large groups?",
             "options": [
               "A",
               "B",
@@ -1768,7 +1768,7 @@ window.TEST2_PAPERS = {
           {
             "n": 9,
             "type": "mc",
-            "stem": "9 Which waterpark gives lessons in a watersport?",
+            "stem": "Which waterpark gives lessons in a watersport?",
             "options": [
               "A",
               "B",
@@ -1784,7 +1784,7 @@ window.TEST2_PAPERS = {
           {
             "n": 10,
             "type": "mc",
-            "stem": "10 Which waterpark will have a new ride opening soon?",
+            "stem": "Which waterpark will have a new ride opening soon?",
             "options": [
               "A",
               "B",
@@ -1800,7 +1800,7 @@ window.TEST2_PAPERS = {
           {
             "n": 11,
             "type": "mc",
-            "stem": "11 Which waterpark offers activities for parents?",
+            "stem": "Which waterpark offers activities for parents?",
             "options": [
               "A",
               "B",
@@ -1816,7 +1816,7 @@ window.TEST2_PAPERS = {
           {
             "n": 12,
             "type": "mc",
-            "stem": "12 Which waterpark has a very fast ride?",
+            "stem": "Which waterpark has a very fast ride?",
             "options": [
               "A",
               "B",
@@ -1832,7 +1832,7 @@ window.TEST2_PAPERS = {
           {
             "n": 13,
             "type": "mc",
-            "stem": "13 Which waterpark can people visit on almost every day of the year?",
+            "stem": "Which waterpark can people visit on almost every day of the year?",
             "options": [
               "A",
               "B",
@@ -1857,7 +1857,7 @@ window.TEST2_PAPERS = {
           {
             "n": 14,
             "type": "mc",
-            "stem": "14 In the first paragraph, what does the writer say about Tonya finding the bottle?",
+            "stem": "In the first paragraph, what does the writer say about Tonya finding the bottle?",
             "options": [
               "A Tonya didn't understand why it was there.",
               "B Tonya knew that it wasn't a modern bottle.",
@@ -1873,7 +1873,7 @@ window.TEST2_PAPERS = {
           {
             "n": 15,
             "type": "mc",
-            "stem": "15 Why was the family surprised by the piece of paper in the bottle?",
+            "stem": "Why was the family surprised by the piece of paper in the bottle?",
             "options": [
               "A It was a strange colour.",
               "B It had writing on it.",
@@ -1889,7 +1889,7 @@ window.TEST2_PAPERS = {
           {
             "n": 16,
             "type": "mc",
-            "stem": "16 What did Ross Anderson tell the family?",
+            "stem": "What did Ross Anderson tell the family?",
             "options": [
               "A A lot of bottles were thrown into the sea on the same day.",
               "B Using bottles to study the seas stopped a short time ago.",
@@ -1905,7 +1905,7 @@ window.TEST2_PAPERS = {
           {
             "n": 17,
             "type": "mc",
-            "stem": "17 What did the family learn from the note in the bottle?",
+            "stem": "What did the family learn from the note in the bottle?",
             "options": [
               "A the address to send the bottle back to",
               "B the date the bottle was made",
@@ -1921,7 +1921,7 @@ window.TEST2_PAPERS = {
           {
             "n": 18,
             "type": "mc",
-            "stem": "18 In the final paragraph, the writer says that the bottle is now",
+            "stem": "In the final paragraph, the writer says that the bottle is now",
             "options": [
               "A in Tonya's home.",
               "B in Hamburg.",
@@ -1946,7 +1946,7 @@ window.TEST2_PAPERS = {
           {
             "n": 19,
             "type": "mc",
-            "stem": "19 The four (19) ..... of the band were John Lennon...",
+            "stem": "The four (19) ..... of the band were John Lennon...",
             "options": [
               "people",
               "members",
@@ -1962,7 +1962,7 @@ window.TEST2_PAPERS = {
           {
             "n": 20,
             "type": "mc",
-            "stem": "20 in the (20) ..... of modern music.",
+            "stem": "in the (20) ..... of modern music.",
             "options": [
               "time",
               "past",
@@ -1978,7 +1978,7 @@ window.TEST2_PAPERS = {
           {
             "n": 21,
             "type": "mc",
-            "stem": "21 The crowd (21) ..... so much noise...",
+            "stem": "The crowd (21) ..... so much noise...",
             "options": [
               "did",
               "got",
@@ -1994,7 +1994,7 @@ window.TEST2_PAPERS = {
           {
             "n": 22,
             "type": "mc",
-            "stem": "22 said they couldn't (22) ..... themselves playing.",
+            "stem": "said they couldn't (22) ..... themselves playing.",
             "options": [
               "hear",
               "know",
@@ -2010,7 +2010,7 @@ window.TEST2_PAPERS = {
           {
             "n": 23,
             "type": "mc",
-            "stem": "23 Music lovers still (23) ..... about how important...",
+            "stem": "Music lovers still (23) ..... about how important...",
             "options": [
               "tell",
               "say",
@@ -2026,7 +2026,7 @@ window.TEST2_PAPERS = {
           {
             "n": 24,
             "type": "mc",
-            "stem": "24 and their music (24) ..... the way pop music sounded.",
+            "stem": "and their music (24) ..... the way pop music sounded.",
             "options": [
               "moved",
               "changed",
@@ -2105,31 +2105,33 @@ window.TEST2_PAPERS = {
         ]
       },
       {
-        "module": "reading",
-        "id": "R6",
-        "name": "Part 6 短邮件（线下完成）",
+        "module": "writing",
+        "id": "W1",
+        "name": "Part 6 短邮件写作",
+        "instruction": "Write 25 words or more.",
         "open": true,
         "responseMode": "display-only",
         "questions": [
           {
             "n": 31,
             "type": "essay",
-            "stem": "Email Sam ≥25词：回答表妹多大、生日做了什么、送了什么礼物。",
+            "stem": "",
             "promptHtml": "<div class=\"md-title\">Part 6 Email</div>\n<p>Read the email from your English friend, Sam.</p>\n<div style=\"background:#f8f9fa;border:1px solid #dee2e6;padding:12px;border-radius:6px;margin:10px 0;\">\n<p><b>From:</b> Sam</p>\n<p>I know it was your cousin’s birthday last Saturday. How old is she now? What did she do for her birthday? What present did you give her?</p>\n</div>\n<p>Write an email to Sam and answer the questions. Write 25 words or more.</p>"
           }
         ]
       },
       {
-        "module": "reading",
-        "id": "R7",
-        "name": "Part 7 看图写故事（线下完成）",
+        "module": "writing",
+        "id": "W2",
+        "name": "Part 7 连环画看图写作",
+        "instruction": "Write 35 words or more.",
         "open": true,
         "responseMode": "display-only",
         "questions": [
           {
             "n": 32,
             "type": "essay",
-            "stem": "Part 7 Story ≥35词：根据三幅图写故事（大作文）。",
+            "stem": "",
             "choice": "大作文",
             "promptHtml": "<div class=\"md-title\">Part 7 Story</div>\n<p>Look at the three pictures. Write the story shown in the pictures. Write 35 words or more.</p>\n<div style=\"text-align:center;margin:12px 0;\">\n<img src=\"assets/test2/ket_p7_story.png\" alt=\"KET Part 7 Story\" style=\"max-width:100%;height:auto;border-radius:6px;border:1px solid #ddd;\" />\n</div>"
           }

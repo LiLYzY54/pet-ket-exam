@@ -60,7 +60,7 @@ assert(homeText.includes('只展示题目') && homeText.includes('自动评分')
 assert(homeText.includes('考生编号') && homeText.includes('本机'), '首页未说明考生编号为本机生成');
 
 // 3. 开始设置 PET 考试与两级选择验证
-await evaluate(`[...document.querySelectorAll('button')].find(x=>x.textContent.trim()==='开始设置考试')?.click()`);
+await evaluate(`[...document.querySelectorAll('button')].find(x=>['点击进入考试','开始设置考试'].includes(x.textContent.trim()))?.click()`);
 await waitFor(`document.querySelector('#view-info')?.offsetParent!==null`,'进入信息页');
 // 缺少套卷拦截
 await evaluate(`window.App.pickExam('PET');document.querySelector('#stuName').value='端到端测试';window.App.startExam()`);

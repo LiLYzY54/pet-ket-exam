@@ -1135,3 +1135,116 @@ footer.foot{
 }
 
 button.exam-card{width:100%;font:inherit}
+
+/* Official Cambridge Report & Table Styles */
+.official-report-card {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--color-card, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,0.05));
+}
+.official-report-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid #2B3E75;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+.official-report-head h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2B3E75;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.official-report-head .official-sub {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.official-navy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  margin: 12px 0 20px;
+  background: #ffffff;
+  border: 1.5px solid #2B3E75;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.official-navy-table th {
+  background-color: #2B3E75;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 12px 14px;
+  text-align: center;
+  border: 1px solid #1E2D5A;
+  letter-spacing: 0.02em;
+}
+.official-navy-table td {
+  padding: 11px 14px;
+  text-align: center;
+  border: 1px solid #CBD5E1;
+  color: #1E293B;
+}
+.official-navy-table tr:nth-child(even) td {
+  background-color: #F8FAFC;
+}
+.official-navy-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.big-scale-callout {
+  font-size: 2.25rem;
+  font-weight: 850;
+  color: #2B3E75;
+  font-variant-numeric: tabular-nums;
+  margin: 16px 0 8px;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.big-scale-callout span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #64748B;
+}
+
+.scale-chart-card {
+  margin: 20px 0;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  text-align: center;
+}
+.scale-chart-card__head {
+  text-align: left;
+  margin-bottom: 14px;
+}
+.scale-chart-card__head h3 {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+  color: #0F172A;
+}
+.scale-chart-card__img-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+.scale-chart-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+

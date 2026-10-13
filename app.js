@@ -1136,6 +1136,71 @@ const App = {
       const mod=d.modules.find(m=>m.id===id), s=scores[id];
       return `<div class="stat objective-stat"><span class="stat-kicker">自动评分</span><b>${s.below?`&lt;${s.minScale}`:s.scale}</b><span>${escapeHtml(mod?.name||id)}<br>${s.below?'低于报告范围':d.reportTemplate.band(s.scale)}<br>原始 ${s.raw} / ${mod?.maxRaw??s.total}</span></div>`;
     };
+
+    // 官方量表图渲染
+    let scaleChartHtml = '';
+    if (window.CambridgeScaleChart) {
+      try {
+        const cRes = window.CambridgeScaleChart.renderChart(state.exam, {
+          reading: scores.reading?.scale,
+          listening: scores.listening?.scale
+        }, { width: 720, height: 410, dpr: 2 });
+        if (cRes && cRes.dataUrl) {
+          scaleChartHtml = `<div class="scale-chart-card">
+            <div class="scale-chart-card__head">
+              <p class="eyebrow">Cambridge English Scale · 官方标准量表图</p>
+              <h3>技能量表分布与分数胶囊 (根据真实答题自动定位)</h3>
+            </div>
+            <div class="scale-chart-card__img-wrap">
+              <img src="${cRes.dataUrl}" alt="Cambridge English Scale Chart" class="scale-chart-img" />
+            </div>
+          </div>`;
+        }
+      } catch (e) {
+        console.warn('Scale chart rendering error:', e);
+      }
+    }
+
+    // 官方 Navy 表格渲染函数 (对齐官方 5 列规范)
+    const renderOfficialSection = (modId, icon, title) => {
+      const stats = window.WordReportExporter ? window.WordReportExporter.extractPartStats(state.exam, modId, r) : [];
+      let rows = '';
+      stats.forEach(st => {
+        rows += `<tr>
+          <td style="text-align:left;font-weight:600">${escapeHtml(st.label)}</td>
+          <td>${st.total}</td>
+          <td style="font-weight:bold;color:var(--color-ok,#059669)">${st.correct}</td>
+          <td style="color:${st.incorrect > 0 ? 'var(--color-bad,#dc2626)' : 'inherit'}">${st.incorrect}</td>
+          <td style="font-weight:bold;color:${st.scoringRate >= 80 ? 'var(--color-ok,#059669)' : st.scoringRate < 60 ? 'var(--color-bad,#dc2626)' : '#d97706'}">${st.scoringRate}%</td>
+        </tr>`;
+      });
+      const sc = scores[modId];
+      const scaleVal = sc.below ? `&lt;${sc.minScale}` : sc.scale;
+      return `<div class="official-report-card">
+        <div class="official-report-head">
+          <h2>${icon} ${title}</h2>
+          <span class="official-sub">By Question Type</span>
+        </div>
+        <div class="table-scroll" tabindex="0">
+          <table class="official-navy-table">
+            <thead>
+              <tr>
+                <th style="width:36%;text-align:left">Question Type</th>
+                <th style="width:16%">Total Question</th>
+                <th style="width:16%">Correct</th>
+                <th style="width:16%">Incorrect</th>
+                <th style="width:16%">Scoring Rate</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+        <div class="big-scale-callout">
+          ${scaleVal}分 <span>(原始分: ${sc.raw} / ${sc.total})</span>
+        </div>
+      </div>`;
+    };
+
     let html=`<div class="report-summary-page">
       <div class="r-head stage-report-head">
         <div>
@@ -1154,26 +1219,18 @@ const App = {
           <p>客观题阶段报告</p><time>${escapeHtml(r.at||'')}</time>
         </div>
       </div>
-      <div class="report-section-heading"><div><p class="eyebrow">AUTO-SCORED</p><h2>听力与阅读成绩</h2></div><p>当前仅展示两个客观题分项结果。</p></div>
+      <div class="report-section-heading"><div><p class="eyebrow">AUTO-SCORED</p><h2>听力与阅读成绩</h2></div><p>当前展示两个客观题分项结果。</p></div>
       <div class="stats objective-stats">${scoreCard('listening')}${scoreCard('reading')}</div>
+      ${scaleChartHtml}
       <div class="report-section-heading manual-heading"><div><p class="eyebrow">OFFLINE ASSESSMENT</p><h2>教师批改填写区</h2></div><p>写作与口语由教师线下批改后填写。</p></div>
       <div class="manual-grid">${App.teacherFormHtml('writing','WRITING 写作')}${App.teacherFormHtml('speaking','SPEAKING 口语')}</div>
     </div>
     <div class="report-analysis">
-      <div class="analysis-heading"><p class="eyebrow">OBJECTIVE-SKILLS ANALYSIS</p><h2>客观题分析与学习建议</h2></div>
-      ${App.sectionHtml('listening', scores)}
+      <div class="analysis-heading"><p class="eyebrow">OBJECTIVE-SKILLS ANALYSIS</p><h2>官方题型成绩与诊断建议</h2></div>
+      ${renderOfficialSection('reading', '📖', 'READING')}
       ${App.sectionHtml('reading', scores)}
-      <div class="r-section report-detail"><h3>详细成绩</h3>
-        <div class="report-detail__scale"><h4>客观题 Cambridge English Scale</h4>
-          <div class="table-scroll" tabindex="0" aria-label="听力与阅读 Cambridge English Scale 成绩表，可横向滚动"><table class="rt objective-scale-table">
-            <tr><th>Listening 听力</th><th>Reading 阅读</th><th>报告状态</th></tr>
-            <tr><td>${scores.listening.below?`&lt;${scores.listening.minScale}`:scores.listening.scale}</td><td>${scores.reading.below?`&lt;${scores.reading.minScale}`:scores.reading.scale}</td><td>待教师补充写作与口语</td></tr>
-          </table></div>
-          <div class="quiet">声明：本分析仅供教学参考，不代表真实考试成绩或官方证书。</div>
-        </div>
-        ${App.typeTableHtml('listening','Listening 听力')}
-        ${App.typeTableHtml('reading','Reading 阅读与读写')}
-      </div>
+      ${renderOfficialSection('listening', '🎧', 'LISTENING')}
+      ${App.sectionHtml('listening', scores)}
       <div class="note"><b>Statement</b><br>${escapeHtml(d.reportTemplate.statement)}</div>
       <details class="wrong-details" open><summary>错题明细 <span>${(r.wrongs||[]).length} 题</span></summary><div class="wrong-list">`;
     html += (r.wrongs||[]).length ? r.wrongs.map(w=>`
@@ -1183,7 +1240,7 @@ const App = {
       : '<div class="hint">客观题全部正确或未作答客观题。</div>';
     html+=`</div></details></div>
       <div class="btn-row report-actions">
-        <button class="btn" onclick="App.exportWord()" title="导出带标准教师批改卡与充足评语空位的 Word (.docx) 格式成绩单">📄 导出 Word 成绩单 (.docx)</button>
+        <button class="btn" onclick="App.exportWord()" title="导出带官方 Cambridge English Scale 图表、阅读与听力 By Question Type 官方表格的 Word (.docx) 成绩单">📄 导出 Word 成绩单 (.docx)</button>
         <button class="btn ghost" onclick="window.print()">打印 / 保存为 PDF</button>
         <button class="btn ghost" onclick="App.show('home')">返回首页</button>
       </div>`;
@@ -1203,6 +1260,19 @@ const App = {
       scores[id] = { raw: info?.raw ?? 0, total: mod?.maxRaw ?? info?.total ?? 0, ...App.scoreMeta(id, info?.raw ?? 0) };
     });
 
+    let chartImageBytes = null;
+    if (window.CambridgeScaleChart) {
+      try {
+        const chartRes = window.CambridgeScaleChart.renderChart(state.exam, {
+          reading: scores.reading?.scale,
+          listening: scores.listening?.scale
+        });
+        chartImageBytes = chartRes?.bytes;
+      } catch (err) {
+        console.warn('Scale chart rendering error for Word export:', err);
+      }
+    }
+
     const exportData = {
       exam: state.exam,
       paperId,
@@ -1210,13 +1280,14 @@ const App = {
       student: state.student || {},
       results: r,
       DATA,
-      scores
+      scores,
+      chartImageBytes
     };
 
     const fileName = `${state.student?.name || '考生'}_${state.exam}_${pMeta.label || paperId}_模考成绩单.docx`;
     try {
-      WordReportExporter.downloadDocx(exportData, fileName);
-      toast('Word 成绩单 (.docx) 导出成功，已预留充足教师批改空位', 3000, 'ok');
+      WordReportExporter.downloadDocx(exportData, fileName, chartImageBytes);
+      toast('Word 成绩单 (.docx) 导出成功，已完整保留官方图表与教师批改空位', 3000, 'ok');
     } catch (e) {
       console.error('Word export error:', e);
       toast('Word 成绩单导出失败，请重试', 3000, 'error');

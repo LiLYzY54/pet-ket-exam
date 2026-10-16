@@ -10,8 +10,7 @@ window.TEST2_PAPERS = {
     "timing": {
       "listening": 2100,
       "reading": 2700,
-      "writing": 2700,
-      "speaking": 720
+      "writing": 2700
     },
     "parts": [
       {
@@ -1089,29 +1088,14 @@ window.TEST2_PAPERS = {
           {
             "n": 1,
             "type": "essay",
-            "stem": "Part 1 必做（约100词）— 给朋友 Alex 回信，回应野营邀请与准备建议。",
-            "promptHtml": "<div class=\"md-title\">Part 1 Email</div>\n<p>Read this email from your English friend Alex and the notes made on it.</p>\n<div style=\"background:#f8f9fa;border:1px solid #dee2e6;padding:12px;border-radius:6px;margin:10px 0;\">\n<p><b>From:</b> Alex<br/><b>Subject:</b> Camping trip!</p>\n<p>Hi! Are you still free to go camping with me next weekend? <i>[Note: Great!]</i></p>\n<p>Should we camp near the lake or in the forest? Which do you prefer? <i>[Note: Say which and why]</i></p>\n<p>What equipment do you think we will need to take with us? <i>[Note: Suggest...]</i></p>\n<p>Write soon,<br/>Alex</p>\n</div>\n<p>Write your email to Alex using all the notes. Write about 100 words.</p>"
+            "stem": "Part 1 必做（约100词）— 给 Alex 回信。请根据下方原卷邮件与批注作答，须回应全部 notes。",
+            "image": "assets/test2/pet_w_p1.png"
           },
           {
             "n": 2,
             "type": "essay",
-            "stem": "Part 2 选做（二选一，约100词）：Article（A relaxing weekend）或 Story（I woke up and realized the train had stopped...）。",
-            "choice": "二选一",
-            "promptHtml": "<div class=\"md-title\">Part 2 Article or Story</div>\n<p>Choose one of these questions. Write your answer in about 100 words.</p>\n<div style=\"margin:10px 0;padding:10px;background:#f8f9fa;border-left:4px solid #1a73e8;\">\n<b>Question 2 — Article: A relaxing weekend</b><br/>\nWhere do you like to spend a relaxing weekend? What do you usually do? Tell us why it helps you relax!\n</div>\n<div style=\"margin:10px 0;padding:10px;background:#f8f9fa;border-left:4px solid #34a853;\">\n<b>Question 3 — Story</b><br/>\nYour English teacher has asked you to write a story. Your story must begin with this sentence:<br/>\n<i>I woke up and realized the train had stopped in the middle of nowhere.</i>\n</div>"
-          }
-        ]
-      },
-      {
-        "module": "speaking",
-        "id": "S",
-        "name": "口语任务（线下完成）",
-        "open": true,
-        "responseMode": "display-only",
-        "questions": [
-          {
-            "n": 1,
-            "type": "essay",
-            "stem": "PET Speaking：日常对话、图片描述与话题讨论；请与考官/老师面对面完成。"
+            "stem": "Part 2 二选一（约100词）— 任选 Question 2（Article）或 Question 3（Story）作答（只做一题）。",
+            "image": "assets/test2/pet_w_p2.png"
           }
         ]
       }
@@ -1128,8 +1112,7 @@ window.TEST2_PAPERS = {
     "timing": {
       "listening": 1800,
       "reading": 3600,
-      "writing": 0,
-      "speaking": 600
+      "writing": 0
     },
     "parts": [
       {
@@ -1161,7 +1144,7 @@ window.TEST2_PAPERS = {
           {
             "n": 2,
             "type": "mc",
-            "stem": "What does the girl want to buy?",
+            "stem": "What does the girl want to get?",
             "image": "assets/test2/ket_l1_q2.png",
             "options": [
               "A",
@@ -1178,7 +1161,7 @@ window.TEST2_PAPERS = {
           {
             "n": 3,
             "type": "mc",
-            "stem": "What was the weather like on Sunday?",
+            "stem": "What is Charlie doing now?",
             "image": "assets/test2/ket_l1_q3.png",
             "options": [
               "A",
@@ -1212,7 +1195,7 @@ window.TEST2_PAPERS = {
           {
             "n": 5,
             "type": "mc",
-            "stem": "Where are the friends going to meet?",
+            "stem": "Where has Tom left his jacket?",
             "image": "assets/test2/ket_l1_q5.png",
             "options": [
               "A",
@@ -1730,8 +1713,7 @@ window.TEST2_PAPERS = {
         "module": "reading",
         "id": "R2",
         "name": "Part 2 信息匹配",
-        "instruction": "For each question, choose the correct answer (A Splash Central, B Aqua World, or C Calypso Park).",
-        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">Waterparks to visit</h3>\n<div class=\"rc-item\"><b>A Splash Central</b>: With only 15 rides, Splash Central isn’t the largest waterpark, but it's open all through spring, summer and autumn. The gym and beauty centre are perfect for adults who prefer to leave their children to enjoy the park's rides by themselves. At the start of this season, the park opened its first surfing pool. Visitors who are good swimmers can now book a two-hour course in this popular watersport — but it’s important to arrive early because only 12 people can surf at a time.</div>\n<div class=\"rc-item\"><b>B Aqua World</b>: There’s a ride at Aqua World called Crazy River that opened only last year. It's quicker than rides at any other waterpark and is already popular with teenagers. The park opens in the summer and has water activities for all ages, including a very safe water-play centre where parents can take their young children who haven't started learning to swim yet. Aqua World also has a fantastic café with views over the lake where there are windsurfing races four times a year.</div>\n<div class=\"rc-item\"><b>C Calypso Park</b>: Calypso Park, which is only closed from 25 December to 2 January, is the oldest waterpark in the area. There are four different swimming pools and a fantastic waterfall. If you visit next month, you'll be among the first to try Storm Pool. It's an exciting ride that makes you feel like you're in a small sailing boat at sea. Many schools bring big classes of children to Calypso Park, so it’s best to arrive early morning or late afternoon if you don't like rides that get busy.</div>\n</div>",
+        "passageHtml": "<div class=\"passage-image-wrap\"><img src=\"assets/test2/ket_r2_passage.png\" alt=\"Part 2 Waterparks to visit\" style=\"max-width:100%;height:auto;border-radius:6px;display:block;margin:0 auto;\" /></div>",
         "questions": [
           {
             "n": 7,
@@ -1743,9 +1725,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "B"
           },
@@ -1759,9 +1741,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "C"
           },
@@ -1775,9 +1757,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "A"
           },
@@ -1791,9 +1773,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "C"
           },
@@ -1807,9 +1789,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "A"
           },
@@ -1823,9 +1805,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "B"
           },
@@ -1839,9 +1821,9 @@ window.TEST2_PAPERS = {
               "C"
             ],
             "labels": [
-              "A Splash Central",
-              "B Aqua World",
-              "C Calypso Park"
+              "Splash Central",
+              "Aqua World",
+              "Calypso Park"
             ],
             "answer": "C"
           }
@@ -1851,8 +1833,7 @@ window.TEST2_PAPERS = {
         "module": "reading",
         "id": "R3",
         "name": "Part 3 长文阅读",
-        "instruction": "For each question, choose the correct answer.",
-        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The message in a bottle that travelled the oceans</h3>\n<p>Last summer, Tonya Illman and her family were walking along their local beach on Wedge Island, Western Australia. Tonya saw something lying in the sand and went to look at it more closely. It was clearly a very old bottle. She thought it was beautiful, and picked it up to show her family. They agreed it probably got there in a storm.</p>\n<p>Then the family noticed there was a piece of yellow paper inside the bottle. When they took it out of the bottle, they couldn't believe there were words written on it. The bottle had a cork top and the paper inside was still quite dry. Tonya looked at the message and could see it was in German.</p>\n<p>Ross Anderson from the nearby museum told the family that the bottle was part of a German project. He explained that thousands of bottles were thrown from ships between 1864 and 1933, to see where the sea carried them. Tonya’s bottle was the 663rd to be found, and the first one since 1934.</p>\n<p>The note in Tonya’s bottle gave the date (1886) and the place where the bottle was thrown into the water (the Indian Ocean, 950 kilometres away). On the other side of the note was a form asking when and where the bottle was found, together with a return address in Hamburg, Germany. The family decided the bottle and note were too important to keep at home, so have lent them to Ross Anderson’s museum for others to see.</p>\n</div>",
+        "passageHtml": "<div class=\"passage-image-wrap\"><img src=\"assets/test2/ket_r3_passage.png\" alt=\"Part 3 A message in a bottle\" style=\"max-width:100%;height:auto;border-radius:6px;display:block;margin:0 auto;\" /></div>",
         "questions": [
           {
             "n": 14,
@@ -1940,8 +1921,7 @@ window.TEST2_PAPERS = {
         "module": "reading",
         "id": "R4",
         "name": "Part 4 完形选择",
-        "instruction": "For each question, choose the correct answer.",
-        "passageHtml": "<div class=\"reading-article\">\n<h3 class=\"ra-title\">The Beatles</h3>\n<p>The Beatles were an English rock band that started in Liverpool, England, in 1960. The four <b>(19)</b> ..... of the band were John Lennon, Paul McCartney, George Harrison and Ringo Starr. They were one of the most successful groups in the <b>(20)</b> ..... of modern music.</p>\n<p>By 1966, the Beatles had millions of fans, and it was difficult for them to find anywhere with enough space for their concerts. That year, they gave the first ever stadium rock concert at Shea Stadium in America, in front of around 50,000 fans. The crowd <b>(21)</b> ..... so much noise that afterwards the Beatles said they couldn't <b>(22)</b> ..... themselves playing.</p>\n<p>Music lovers still <b>(23)</b> ..... about how important the Beatles were. They were the first British band to write their own songs, and their music <b>(24)</b> ..... the way pop music sounded.</p>\n</div>",
+        "passageHtml": "<div class=\"passage-image-wrap\"><img src=\"assets/test2/ket_r4_passage.png\" alt=\"Part 4 The Beatles\" style=\"max-width:100%;height:auto;border-radius:6px;display:block;margin:0 auto;\" /></div>",
         "questions": [
           {
             "n": 19,
@@ -2046,7 +2026,7 @@ window.TEST2_PAPERS = {
         "id": "R5",
         "name": "Part 5 开放完形",
         "instruction": "For each question, write the correct answer. Write one word for each gap.",
-        "passageHtml": "<div class=\"reading-article\">\n<p><b>From:</b> Jaime<br/><b>To:</b> Lena</p>\n<p>Have you got the new email about our class trip to (0) [THE] Science Museum next Thursday? The time we have <b>(25)</b> ..... meet at school has changed. It <b>(26)</b> ..... now at 9 a.m.</p>\n<p>I think it will be a really good trip. <b>(27)</b> ..... you think we should take some sandwiches with us? I know we can get drinks in the museum, <b>(28)</b> ..... I’m not sure they sell food.</p>\n<p><b>(29)</b> ..... you like, I can come to your house at 8:30 on Thursday and we can walk to school together. Write back and let <b>(30)</b> ..... know!</p>\n</div>",
+        "passageHtml": "<div class=\"passage-image-wrap\"><img src=\"assets/test2/ket_r5_passage.png\" alt=\"Part 5 Science Museum trip\" style=\"max-width:100%;height:auto;border-radius:6px;display:block;margin:0 auto;\" /></div>",
         "questions": [
           {
             "n": 25,
@@ -2134,20 +2114,6 @@ window.TEST2_PAPERS = {
             "stem": "",
             "choice": "大作文",
             "promptHtml": "<div class=\"md-title\">Part 7 Story</div>\n<p>Look at the three pictures. Write the story shown in the pictures. Write 35 words or more.</p>\n<div style=\"text-align:center;margin:12px 0;\">\n<img src=\"assets/test2/ket_p7_story.png\" alt=\"KET Part 7 Story\" style=\"max-width:100%;height:auto;border-radius:6px;border:1px solid #ddd;\" />\n</div>"
-          }
-        ]
-      },
-      {
-        "module": "speaking",
-        "id": "S",
-        "name": "口语（线下完成）",
-        "open": true,
-        "responseMode": "display-only",
-        "questions": [
-          {
-            "n": 1,
-            "type": "essay",
-            "stem": "KET Speaking：信息交流、日常问答与图片讨论；请与老师面对面完成。"
           }
         ]
       }

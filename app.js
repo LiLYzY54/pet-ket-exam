@@ -202,7 +202,10 @@ const App = {
     const timing = paper?.timing || d?.timing || {};
     const mins = Math.round(Object.values(timing).reduce((a,b)=>a+b, 0)/60);
     const names = state.modules.map(id=>d.modules.find(m=>m.id===id)?.name.split(' ')[0]).filter(Boolean);
-    el.innerHTML=`<b>${state.exam} · ${pMeta.label} · ${state.mode==='formal'?'正式模考':'练习模式'}</b><span>约 ${mins} 分钟 · ${names.join('、')}</span>`;
+    el.innerHTML=`<b>${state.exam} · ${pMeta.label} · ${state.mode==='formal'?'正式模考':'练习模式'}</b><span>约 ${mins} 分钟 · ${names.join('、')}</span>
+      <div style="margin-top:8px;font-size:0.875rem;color:#0369a1;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:8px 12px;text-align:left;">
+        ⚠️ <b>听力须知</b>：进入试卷后首先进行听力部分，音频将自动开始播放并同步启动倒计时；各部分录音已内置完整播放两遍，无需手动控制播放次数。
+      </div>`;
     if(btn) btn.textContent=`进入 ${state.exam} ${pMeta.label}`;
   },
   resumeDraft(){
@@ -324,12 +327,10 @@ const App = {
     cards.push(App.scaleCardHTML('PET','reading','PET 阅读 Reading'));
     cards.push(App.scaleCardHTML('PET','listening','PET 听力 Listening'));
     cards.push(App.scaleCardHTML('PET','writing','PET 写作 Writing'));
-    cards.push(App.scaleCardHTML('PET','speaking','PET 口语 Speaking'));
     // KET
     cards.push(App.scaleCardHTML('KET','reading','KET 阅读 Reading'));
     cards.push(App.scaleCardHTML('KET','listening','KET 听力 Listening'));
     cards.push(App.scaleCardHTML('KET','writing','KET 写作 Writing'));
-    cards.push(App.scaleCardHTML('KET','speaking','KET 口语 Speaking'));
     grid.innerHTML=cards.filter(Boolean).join('');
   },
   renderAuthFull(){
@@ -338,16 +339,14 @@ const App = {
     const covers = App.coverDocs().map(d=>`<figure class="auth-item"><div class="title-row"><h4>${d.t}</h4><span class="meta">封面</span></div><img src="${d.src}" alt="${d.t}"/><div class="src-chip">来源：官方 Sample</div></figure>`).join('');
     // 统一用 HTML 换算卡，不放参差不齐的截图
     const rubrics = [
-      ['pet_writing_rubric.png','PET 写作评分标准'],
-      ['ket_speaking_rubric1.png','KET 口语标准 1'],
-      ['ket_speaking_rubric2.png','KET 口语标准 2']
+      ['pet_writing_rubric.png','PET 写作评分标准']
     ].map(([k,t])=>{
       const src=get(k);
       return src?`<figure class="auth-item"><div class="title-row"><h4>${t}</h4><span class="meta">评分细则</span></div><img src="${src}" alt="${t}"/><div class="src-chip">来源：项目文件夹</div></figure>`:'';
     }).join('');
-    const scales = ['reading','listening','writing','speaking'].map(id=>{
-      const pet=App.scaleCardHTML('PET', id, 'PET '+({reading:'阅读',listening:'听力',writing:'写作',speaking:'口语'}[id]));
-      const ket=App.scaleCardHTML('KET', id, 'KET '+({reading:'阅读',listening:'听力',writing:'写作',speaking:'口语'}[id]));
+    const scales = ['reading','listening','writing'].map(id=>{
+      const pet=App.scaleCardHTML('PET', id, 'PET '+({reading:'阅读',listening:'听力',writing:'写作'}[id]));
+      const ket=App.scaleCardHTML('KET', id, 'KET '+({reading:'阅读',listening:'听力',writing:'写作'}[id]));
       return pet+ket;
     }).join('');
     $('authFullGrid').innerHTML = `
@@ -432,7 +431,7 @@ const App = {
         <span class="module-chip__tag">${tag}</span>
       </div>`;
     }).join('') + `</div>
-    <p class="quiet module-summary"><b>无需上传：</b>网站不会收集作文、口语录音或语音识别内容。</p>`;
+    <p class="quiet module-summary"><b>无需上传：</b>网站不会收集作文或线下作答内容。</p>`;
     App.renderSetupSummary();
   },
   pickExam(ex){
@@ -522,10 +521,16 @@ const App = {
     App.startTimer();
     App.saveDraft();
     const pMeta = getPaperMeta();
-    toast(`已进入 ${state.exam} ${pMeta.label}：客观题在线作答，写作与口语线下完成`);
+    toast(`已进入 ${state.exam} ${pMeta.label}：客观题在线作答，写作线下完成`);
+    setTimeout(() => {
+      const p = App.currentPart();
+      if(p && p.audioPart) {
+        App.playPart();
+      }
+    }, 400);
   },
   activeParts(){
-    const order={listening:0,reading:1,writing:2,speaking:3};
+    const order={listening:0,reading:1,writing:2};
     const paper = getPaperData();
     const parts = (paper && paper.parts) || (DATA[state.exam] && DATA[state.exam].parts) || [];
     return parts.filter(p=>state.modules.includes(p.module))
@@ -536,8 +541,8 @@ const App = {
   buildExam(){
     const d=DATA[state.exam], paper=getPaperData(), pMeta=getPaperMeta(), parts=App.activeParts();
     $('examTitle').textContent=`${state.exam} · ${pMeta.label}`;
-    $('examSub').textContent=`${paper.title} · ${state.student.name} · ${state.student.id} · 听力每部分 2 遍`;
-    const modShort={listening:'听力',reading:'阅读',writing:'写作',speaking:'口语'};
+    $('examSub').textContent=`${paper.title} · ${state.student.name} · ${state.student.id} · 录音内置播放两遍`;
+    const modShort={listening:'听力',reading:'阅读',writing:'写作'};
     const grouped=parts.reduce((groups,p,i)=>{
       const last=groups[groups.length-1];
       if(!last || last.module!==p.module) groups.push({module:p.module,items:[]});
@@ -559,7 +564,7 @@ const App = {
     if(!target || i<0 || i>=parts.length) return;
     const current=App.currentPart();
     if(state.mode==='formal' && current && target.module!==current.module){
-      const moduleOrder={listening:0,reading:1,writing:2,speaking:3};
+      const moduleOrder={listening:0,reading:1,writing:2};
       const movingBack=(moduleOrder[target.module]??9)<(moduleOrder[current.module]??9);
       if(movingBack || state.closedModules?.[target.module]){
         toast('上一模块已结束，正式模考不能返回修改',3000,'error'); return;
@@ -569,7 +574,7 @@ const App = {
         toast('正式模考请先完成当前模块，再进入下一模块',3000,'error'); return;
       }
       if(!options.confirmed && !options.force){
-        const modNames={listening:'听力',reading:'阅读',writing:'写作',speaking:'口语'};
+        const modNames={listening:'听力',reading:'阅读',writing:'写作'};
         App.askConfirm({
           title:'确认进入下一模块？',
           message:`您即将结束【${modNames[current.module]||current.module}】模块。正式模考模式下，进入下一模块后将无法返回修改本模块答案。`,
@@ -610,7 +615,7 @@ const App = {
     let html=`<div class="part-intro ${displayOnly?'display-only-intro':''}"><b>${escapeHtml(p.name)}</b><br>${escapeHtml(p.instruction||(displayOnly?'请阅读题目并在线下完成':'开放任务'))}</div>`;
     if(displayOnly) html+=`<div class="offline-notice" role="note">
       <div class="offline-notice__icon" aria-hidden="true">✎</div>
-      <div><b>${p.module==='speaking'?'请与老师面对面完成口语任务':'请在纸质答题卡上完成写作'}</b>
+      <div><b>请在纸质答题卡上完成写作</b>
       <p>本页面只展示题目，不会收集文字、图片、文件或录音。完成后点击页面底部按钮继续。</p></div>
     </div>`;
     const passageHtml = p.passageHtml || p.textHtml;
@@ -619,10 +624,11 @@ const App = {
     p.questions.forEach(q=>{
       const key=App.qKey(p.module,p.id,q.n);
       const ans=state.answers[key], flag=!!state.flags[key];
-      html+=`<fieldset class="q ${displayOnly?'offline-task':''} ${flag?'flagged':''}" id="q-${p.id}-${q.n}" tabindex="-1">
+      const isWriting = p.module === 'writing';
+      html+=`<fieldset class="q ${isWriting ? 'offline-task-writing' : (displayOnly?'offline-task':'')} ${flag?'flagged':''}" id="q-${p.id}-${q.n}" tabindex="-1">
         <legend class="sr-only">第 ${q.n} 题</legend>
         <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
-          <div><span class="q-num">Q${q.n}</span> <span class="quiet">${q.type==='mc'?'单选':q.type==='text'?'填空':p.module==='speaking'?'口语题目 · 线下完成':'写作题目 · 线下完成'}</span>
+          <div>${isWriting ? '' : `<span class="q-num">Q${q.n}</span> <span class="quiet">${q.type==='mc'?'单选':q.type==='text'?'填空':'写作题目 · 线下完成'}</span>`}
           ${q.stem?`<p class="q-stem">${escapeHtml(q.stem)}</p>`:''}</div>
           ${displayOnly?'<span class="offline-badge">只读题目</span>':`<button type="button" class="chip ${flag?'active':''}" onclick="App.flag('${key}')" aria-pressed="${flag}" aria-label="${flag?'取消标记':'标记'}第 ${q.n} 题">${flag?'已标记':'标记'}</button>`}
         </div>`;
@@ -736,7 +742,7 @@ const App = {
     App.ensureAudioSrc();
     const start=p.audioStart??0, end=p.audioEnd;
     const range=end!=null?`${fmtTime(start)} – ${fmtTime(end)}`:`从 ${fmtTime(start)} 起`;
-    $('audioCue').textContent=`本部分音频 ${range} · 每部分最多听 2 遍（官方）`;
+    $('audioCue').textContent=`本部分音频 ${range} · 录音内置播放两遍`;
     App.updateListenUI();
   },
   listenLimit(){
@@ -747,24 +753,21 @@ const App = {
   listensLeft(id){ return Math.max(0, App.listenLimit()-App.partHeard(id)) },
   updateListenUI(){
     const p=App.currentPart(); if(!p||!p.audioPart) return;
-    const used=App.partHeard(p.id), left=App.listensLeft(p.id), lim=App.listenLimit();
     const btn=$('btnPlayPart');
+    const player=$('player');
+    const elLeft=$('listenLeft');
+    if(elLeft) elLeft.innerHTML='';
     if(!btn) return;
     if(state.audioFailed){
-      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 音频未就绪，播放次数未扣除`;
       btn.disabled=true; btn.textContent='音频不可用';
     }else if(!state.audioReady){
-      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 正在准备音频`;
       btn.disabled=true; btn.textContent='正在加载…';
     }else if(state.audioBuffering){
-      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 正在缓冲音频…`;
-      btn.disabled=true; btn.textContent='正在缓冲…';
-    }else if(left<=0){
-      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 次数已用完`;
-      btn.disabled=true; btn.textContent='次数已用完';
+      btn.disabled=false; btn.textContent='正在缓冲…';
+    }else if(player && !player.paused){
+      btn.disabled=false; btn.textContent='暂停播放';
     }else{
-      $('listenLeft').innerHTML=`<b>已听 ${used}/${lim} 遍</b> · 还可听 ${left} 遍`+(state.hearOpen===p.id?' · 本遍进行中':'');
-      btn.disabled=false; btn.textContent=`播本部分（剩 ${left}）`;
+      btn.disabled=false; btn.textContent='播放本部分';
     }
   },
   seekPart(play){
@@ -789,21 +792,23 @@ const App = {
     if(state.audioFailed){ toast('音频未加载成功，请点击“重新加载音频”',3000,'error'); return }
     if(!state.audioReady){ toast('音频仍在加载，请稍候',2200); return }
     if(state.audioBuffering){ toast('音频正在缓冲，请稍候',2000); return }
-    if(state.hearOpen===p.id){ player.play().catch(()=>{}); App.updateListenUI(); return }
-    if(App.listensLeft(p.id)<=0){ toast('本部分听力次数已用完'); return }
+    if(player && !player.paused){
+      player.pause();
+      App.updateListenUI();
+      return;
+    }
     const start = p.audioStart ?? 0;
     const end = p.audioEnd ?? Infinity;
     if(player.currentTime >= end - 0.5 || player.currentTime < start){
       try { player.currentTime = start; } catch(e){}
     }
-    App.seekPart(false);
     state.audioBuffering=true;
     App.updateListenUI();
     player.play().catch(err=>{
       state.audioBuffering=false;
       App.updateListenUI();
       if(err && (err.name==='AbortError'||/interrupted by a call to pause/i.test(err.message))) return;
-      App.setAudioFailed('浏览器未能播放音频，本次未扣除播放次数');
+      App.setAudioFailed('浏览器未能播放音频');
     });
   },
   nextListenPart(){
@@ -863,7 +868,7 @@ const App = {
       }
     }
     const left=Math.max(0,Math.floor((endsAt-Date.now())/1000));
-    const label=({listening:'听力剩余',reading:'阅读剩余',writing:'写作剩余',speaking:'口语剩余'}[mod]||'剩余');
+    const label=({listening:'听力剩余',reading:'阅读剩余',writing:'写作剩余'}[mod]||'剩余');
     if(el) el.textContent=`${label} ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
     if(badge){
       if(left <= 60 && left > 0){
@@ -901,14 +906,14 @@ const App = {
       <div class="stat"><b>${total-done}</b><span>客观题未答</span></div>
       <div class="stat"><b>${Object.values(state.flags).filter(Boolean).length}</b><span>已标记</span></div>
       <div class="stat"><b>${offlineDone}/${offlineParts.length}</b><span>线下任务已确认</span></div>`;
-    const modName={listening:'听力 Listening',reading:'阅读 Reading & Writing',writing:'写作 Writing',speaking:'口语 Speaking'};
+    const modName={listening:'听力 Listening',reading:'阅读 Reading & Writing',writing:'写作 Writing'};
     const groups=[];
     parts.forEach((p,pi)=>{
       let g=groups.find(x=>x.module===p.module);
       if(!g){ g={module:p.module, parts:[]}; groups.push(g) }
       g.parts.push({p,pi});
     });
-    const modOrder={listening:0,reading:1,writing:2,speaking:3};
+    const modOrder={listening:0,reading:1,writing:2};
     groups.sort((a,b)=>modOrder[a.module]-modOrder[b.module]);
     let list='';
     groups.forEach(g=>{
@@ -917,7 +922,7 @@ const App = {
         if(App.isDisplayOnlyPart(p)){
           const completed=!!state.offlineCompleted[App.offlineKey(p)];
           list+=`<div class="check-offline-row">
-            <div><b>${escapeHtml(p.name)}</b><div class="quiet">${p.module==='speaking'?'与老师面对面完成':'在纸质答题卡上完成'}</div></div>
+            <div><b>${escapeHtml(p.name)}</b><div class="quiet">在纸质答题卡上完成</div></div>
             <button type="button" class="chip ${completed?'done':''}" aria-label="${escapeAttr(p.name)}，${completed?'已确认':'待确认'}" onclick="App.gotoPart(${pi});App.show('exam')">${completed?'✓ 已确认':'查看题目'}</button>
           </div>`;
           return;
@@ -1080,7 +1085,7 @@ const App = {
     const mid=entries.filter(e=>e.pct>=60 && e.pct<80);
     const weak=entries.filter(e=>e.pct<60);
     const tips=App.tipsFor(moduleId, byPart);
-    const title={listening:'LISTENING 听力',reading:'READING 阅读与读写',writing:'WRITING 写作',speaking:'SPEAKING 口语'}[moduleId]||moduleId;
+    const title={listening:'LISTENING 听力',reading:'READING 阅读与读写',writing:'WRITING 写作'}[moduleId]||moduleId;
     let h=`<div class="r-section"><h3>${title}</h3>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0">
         <b style="font-size:28px;font-variant-numeric:tabular-nums">${scale!=null?(score.below?`&lt;${score.minScale}`:scale):'—'}</b>
@@ -1222,8 +1227,8 @@ const App = {
       <div class="report-section-heading"><div><p class="eyebrow">AUTO-SCORED</p><h2>听力与阅读成绩</h2></div><p>当前展示两个客观题分项结果。</p></div>
       <div class="stats objective-stats">${scoreCard('listening')}${scoreCard('reading')}</div>
       ${scaleChartHtml}
-      <div class="report-section-heading manual-heading"><div><p class="eyebrow">OFFLINE ASSESSMENT</p><h2>教师批改填写区</h2></div><p>写作与口语由教师线下批改后填写。</p></div>
-      <div class="manual-grid">${App.teacherFormHtml('writing','WRITING 写作')}${App.teacherFormHtml('speaking','SPEAKING 口语')}</div>
+      <div class="report-section-heading manual-heading"><div><p class="eyebrow">OFFLINE ASSESSMENT</p><h2>教师批改填写区</h2></div><p>写作由教师线下批改后填写。</p></div>
+      <div class="manual-grid">${App.teacherFormHtml('writing','WRITING 写作')}</div>
     </div>
     <div class="report-analysis">
       <div class="analysis-heading"><p class="eyebrow">OBJECTIVE-SKILLS ANALYSIS</p><h2>官方题型成绩与诊断建议</h2></div>
@@ -1349,21 +1354,13 @@ function bindAudio(){
   });
   player.addEventListener('play', ()=>{
     const p=App.currentPart(); if(!p||!p.audioPart) return;
-    if(state.hearOpen!==p.id && App.listensLeft(p.id)<=0){
-      player.pause(); App.updateListenUI(); return;
-    }
     state.audioBuffering=true;
     App.updateListenUI();
   });
   player.addEventListener('playing', ()=>{
     state.audioBuffering=false;
     const p=App.currentPart(); if(!p||!p.audioPart) return;
-    if(state.hearOpen!==p.id){
-      if(App.listensLeft(p.id)<=0){ player.pause(); App.updateListenUI(); return; }
-      state.listenCounts[p.id]=App.partHeard(p.id)+1;
-      state.hearOpen=p.id;
-      App.saveDraft();
-    }
+    state.hearOpen=p.id;
     App.updateListenUI();
   });
   player.addEventListener('pause', ()=>{

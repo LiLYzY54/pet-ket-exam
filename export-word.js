@@ -1,8 +1,8 @@
 /**
  * PET / KET 在线模考 · Word (.docx) 官方高保真报告导出引擎
- * 严格对齐官方 Word 模板排版（KET 与 PET 专属 5 页独立规范）
+ * 严格对齐官方 Word 模板排版（KET 与 PET 专属 4 页独立规范）
  * 1:1 保留 Cambridge English Scale 官方量表图、阅读与听力 By Question Type 官方表格 (#2B3E75 深蓝表头)
- * 主观题（写作、口语）严格预留标准评分量表卡与充足教师批改手写/录入空位
+ * 主观题（写作）严格预留标准评分量表卡与充足教师批改手写/录入空位
  */
 
 (function (root, factory) {
@@ -879,86 +879,6 @@
     // 资深教师 SMART 教学诊断与红线提分指令
     const lAnalysis = generateSmartAnalysis(exam, 'listening', lStats, lScore.scale);
     lAnalysis.forEach(p => { body += wP(p.runs, p); });
-
-    // 换页进入 Page 5
-    body += wPageBreak();
-
-    // ==========================================
-    // PAGE 5: SPEAKING 口语教师批改卡 (留足空位)
-    // ==========================================
-    body += wP([
-      { text: 'SPEAKING', size: 36, bold: true, color: '2B3E75' }
-    ], { spaceBefore: 60, spaceAfter: 40 });
-
-    body += wP([
-      { text: 'Speaking Assessment Rubric · 教师批改卡 (线下完成)', size: 24, bold: true, color: '475569' }
-    ], { spaceBefore: 0, spaceAfter: 120 });
-
-    // 口语大号得分占位
-    body += wP([
-      { text: `[ 待评 ] 分 (满分 ${isKet ? 25 : 30} 分，考官现场批改)`, size: 40, bold: true, color: '2B3E75' }
-    ], { spaceBefore: 80, spaceAfter: 120 });
-
-    // 官方口语评分标准表
-    const speakingRows = isKet ? [
-      [
-        { text: 'Knowledge Point 考查维度', bold: true, bg: '2B3E75', color: 'FFFFFF', width: 3600 },
-        { text: 'Full Score', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 },
-        { text: 'Score', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 },
-        { text: 'Scoring Rate', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 }
-      ],
-      [{ text: 'Grammar and Vocabulary 语法与词汇', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Pronunciation 语音语调', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Interactive Communication 互动交际', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Global Achievement 全局表现', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [
-        { text: '口语最终核定得分', bold: true, bg: 'F1F5F9', color: '2B3E75', width: 3600 },
-        { colspan: 3, text: '原始分合计: [ ________ ] / 20 (Global x2 = 25)   |   Cambridge Scale: [ ________ ]   |   CEFR: [ ________ ]', bold: true, color: '1D4ED8', align: 'center', width: 6000 }
-      ]
-    ] : [
-      [
-        { text: 'Knowledge Point 考查维度', bold: true, bg: '2B3E75', color: 'FFFFFF', width: 3600 },
-        { text: 'Full Score', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 },
-        { text: 'Score', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 },
-        { text: 'Scoring Rate', bold: true, bg: '2B3E75', color: 'FFFFFF', align: 'center', width: 2000 }
-      ],
-      [{ text: 'Grammar and Vocabulary 语法与词汇', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Discourse Management 篇章组织', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Pronunciation 语音语调', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Interactive Communication 互动应答', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [{ text: 'Global Achievement 全局表现', bold: true, width: 3600 }, { text: '5', align: 'center', width: 2000 }, { text: '[      ]', align: 'center', width: 2000 }, { text: '[      ]%', align: 'center', width: 2000 }],
-      [
-        { text: '口语最终核定得分', bold: true, bg: 'F1F5F9', color: '2B3E75', width: 3600 },
-        { colspan: 3, text: '原始分合计: [ ________ ] / 25 (Global x2 = 30)   |   Cambridge Scale: [ ________ ]   |   CEFR: [ ________ ]', bold: true, color: '1D4ED8', align: 'center', width: 6000 }
-      ]
-    ];
-    body += wTable(speakingRows, { width: 9600, borderColor: '2B3E75', paddingTop: 80, paddingBottom: 80 });
-
-    // 口语实测表现点评与提分建议大空位
-    const speakingBlankBox = [
-      [
-        {
-          paragraphs: [
-            { runs: [{ text: '【口语考官实测表现点评与建议】 (请记录现场应答细节与提升指标)：', bold: true, color: '2B3E75', size: 19 }], spaceBefore: 60, spaceAfter: 40 },
-            { runs: [{ text: '1. Part 1 日常问答与流利度 (Fluency)：要求考官提问后3秒内流利作答，无长停顿与汉语中介语；', color: '475569', size: 18 }], spaceBefore: 20, spaceAfter: 20 },
-            { runs: [{ text: '   现场表现记录：_____________________________________________________________________________________________', color: '64748B', size: 18 }], spaceBefore: 20, spaceAfter: 30 },
-
-            { runs: [{ text: '2. Part 2 图片连续描述 (Descriptive Speech)：要求脱稿连续描述达60秒，包含地点、人物行为、天气与推测句式；', color: '475569', size: 18 }], spaceBefore: 30, spaceAfter: 20 },
-            { runs: [{ text: '   现场表现记录：_____________________________________________________________________________________________', color: '64748B', size: 18 }], spaceBefore: 20, spaceAfter: 30 },
-
-            { runs: [{ text: '3. 合作讨论与主动追问 (Interaction)：要求至少运用3次主动提问句式（What about you? / Do you agree?）；', color: '475569', size: 18 }], spaceBefore: 30, spaceAfter: 20 },
-            { runs: [{ text: '   现场表现记录：_____________________________________________________________________________________________', color: '64748B', size: 18 }], spaceBefore: 20, spaceAfter: 30 },
-
-            { runs: [{ text: '4. 语音重音与发音清晰度 (Pronunciation)：元音饱满、辅音尾音不吞音，重点攻克长短元音与连读；', color: '475569', size: 18 }], spaceBefore: 30, spaceAfter: 20 },
-            { runs: [{ text: '   现场表现记录：_____________________________________________________________________________________________', color: '64748B', size: 18 }], spaceBefore: 20, spaceAfter: 50 },
-
-            { runs: [{ text: '口试考官签名：____________________          测评日期：2026年____月____日          整体等级建议：[  ] 卓越  [  ] 达标  [  ] 需冲刺', bold: true, color: '1E293B', size: 18 }], spaceBefore: 60, spaceAfter: 60 }
-          ]
-        }
-      ]
-    ];
-    body += '<w:p><w:pPr><w:spacing w:before="120" w:after="80"/></w:pPr></w:p>';
-    body += wTable(speakingBlankBox, { width: 9600, borderColor: 'CBD5E1', paddingTop: 80, paddingBottom: 80 });
 
     // 页面设置 (A4, 210mm x 297mm, margins 18mm)
     body += `<w:sectPr>

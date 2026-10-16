@@ -29,7 +29,7 @@
         <div class="hero-auth__copy">
           <p class="eyebrow">Cambridge Assessment English · Official Sample</p>
           <h2>开始 PET / KET 在线模考</h2>
-          <p class="lede">听力与阅读在网站作答并自动评分；写作与口语只展示题目，学生在线下完成，教师批改后填写报告。</p>
+          <p class="lede">听力与阅读在网站作答并自动评分；写作只展示题目，学生在线下完成，教师批改后填写报告。</p>
           <div class="btn-row" style="margin-top:18px">
             <button class="btn" onclick="App.show('info')">点击进入考试</button>
             <button class="btn ghost" onclick="App.show('authority')">查看官方题源</button>
@@ -56,8 +56,8 @@
       <div class="panel home-guidance">
         <h2>使用说明</h2>
         <ul class="lede" style="padding-left:18px">
-          <li>流程：填写信息 → 在线完成听力/阅读 → 线下完成写作/口语 → 生成阶段报告。</li>
-          <li>听力每部分固定听 2 遍；写作与口语页面只展示题目，不收集答案或录音。</li>
+          <li>流程：填写信息 → 在线完成听力/阅读 → 线下完成写作 → 生成阶段报告。</li>
+          <li>听力各部分录音已内置完整播放两遍；写作页面只展示题目，不收集答案。</li>
           <li>当前考生编号仅在本机生成，不保证跨设备唯一。</li>
           <li>客观题答案、草稿和报告只保存在当前浏览器中；共用设备使用后请清理本机记录。</li>
         </ul>
@@ -95,7 +95,7 @@
           <label class="field"><span>场次 Session</span><input id="stuSession" name="stuSession" readonly aria-readonly="true" /></label>
         </div>
         <h3>本次考试内容</h3>
-        <p class="quiet" style="margin:0 0 8px">四项内容固定参加：听力、阅读在线作答；写作、口语只展示题目并在线下完成。</p>
+        <p class="quiet" style="margin:0 0 8px">三项内容固定参加：听力、阅读在线作答；写作只展示题目并在线下完成。</p>
         <div id="moduleChecks"></div>
         <h3>考试模式</h3>
         <div class="mode-pick" role="radiogroup" aria-label="考试模式">
@@ -118,10 +118,10 @@
         <h2>本次流程</h2>
         <ol class="flow-steps" aria-label="测试流程">
           <li><b>1</b><span><strong>确认信息</strong><small>选择 PET / KET 与考试模式</small></span></li>
-          <li><b>2</b><span><strong>完成考试</strong><small>在线完成客观题，按题目在线下完成写作与口语</small></span></li>
-          <li><b>3</b><span><strong>生成模板</strong><small>查看客观题成绩，打印教师填写区</small></span></li>
+          <li><b>2</b><span><strong>完成考试</strong><small>在线完成客观题，按题目在线下完成写作</small></span></li>
+          <li><b>3</b><span><strong>生成报告</strong><small>查看客观题成绩，打印教师填写区</small></span></li>
         </ol>
-        <div class="hint">正式模考按模块计时，上一模块结束后不能返回修改；练习模式可继续作答。</div>
+        <div class="hint">⚠️ 听力须知：进入听力作答页面后，录音音频与倒计时将自动开始；各部分录音已内置完整播放两遍，无需手动控制播放次数。<br>正式模考按模块计时，上一模块结束后不能返回修改；练习模式可继续作答。</div>
       </div>
     </section>
 
@@ -170,7 +170,6 @@
         <div id="audioWrap" class="audio hidden">
           <div class="audio__details">
             <div class="quiet" id="audioCue"></div>
-            <div class="quiet" id="listenLeft" aria-live="polite"></div>
             <div id="audioStatus" class="audio-status" role="status">正在准备听力音频…</div>
           </div>
           <audio id="player" preload="auto"></audio>
@@ -196,7 +195,7 @@
     <section id="view-check" class="hidden">
       <div class="panel">
         <h2>提交前检查</h2>
-        <p class="lede">客观题用绿色、黄色和灰色区分已答、已标记与未答；写作、口语显示线下完成确认状态。</p>
+        <p class="lede">客观题用绿色、黄色和灰色区分已答、已标记与未答；写作显示线下完成确认状态。</p>
         <div id="checkSummary" class="stats"></div>
         <div id="checkList"></div>
         <div class="hint" id="checkHint"></div>

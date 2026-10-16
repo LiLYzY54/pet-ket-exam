@@ -15,7 +15,7 @@
   /**
    * 绘制 Cambridge English Scale 官方量表图
    * @param {string} exam 'KET' | 'PET'
-   * @param {object} scores { reading: number, listening: number, writing?: number, speaking?: number }
+   * @param {object} scores { reading: number, listening: number, writing?: number }
    * @param {object} options 自定义配置
    * @returns {{ canvas: HTMLCanvasElement, dataUrl: string, bytes: Uint8Array }}
    */
@@ -63,9 +63,9 @@
     const rulerX = 136;
     const certX = 205;
     const certW = 92;
-    const colW = 86;
-    const colGap = 16;
-    const colsStartX = 325;
+    const colW = 105;
+    const colGap = 24;
+    const colsStartX = 345;
 
     // 3. 头部标签
     ctx.font = 'bold 12px Arial, "Microsoft YaHei", sans-serif';
@@ -82,7 +82,7 @@
     ctx.fillText('Certificated', certX + certW / 2, 22);
     ctx.fillText('Results', certX + certW / 2, 38);
 
-    const colTitles = ['Reading', 'Writing', 'Listening', 'Speaking'];
+    const colTitles = ['Reading', 'Writing', 'Listening'];
     colTitles.forEach((name, i) => {
       const cx = colsStartX + i * (colW + colGap) + colW / 2;
       ctx.font = 'bold 14px Arial, "Microsoft YaHei", sans-serif';
@@ -90,8 +90,8 @@
       ctx.fillText(name, cx, 30);
     });
 
-    // 4. 四个技能柱状背景 (浅灰柱)
-    for (let i = 0; i < 4; i++) {
+    // 4. 三个技能柱状背景 (浅灰柱)
+    for (let i = 0; i < colTitles.length; i++) {
       const cx = colsStartX + i * (colW + colGap);
       ctx.fillStyle = '#EDEDF0';
       ctx.fillRect(cx, topY, colW, chartH);
@@ -236,8 +236,8 @@
       ctx.restore();
     }
 
-    // 四科目顺序：Reading, Writing, Listening, Speaking
-    const skillKeys = ['reading', 'writing', 'listening', 'speaking'];
+    // 三科目顺序：Reading, Writing, Listening
+    const skillKeys = ['reading', 'writing', 'listening'];
     skillKeys.forEach((key, idx) => {
       const cx = colsStartX + idx * (colW + colGap);
       const px = cx + (colW - pillW) / 2;
@@ -246,8 +246,8 @@
       if (scoreVal != null && !isNaN(scoreVal) && scoreVal >= minScale) {
         const py = valToY(scoreVal) - pillH / 2;
         drawPill(px, py, String(scoreVal), false);
-      } else if (key === 'writing' || key === 'speaking') {
-        // 写作与口语线下批改，若无分数则在中段绘制待评小卡
+      } else if (key === 'writing') {
+        // 写作线下批改，若无分数则在中段绘制待评小卡
         const midScore = isKet ? 120 : 140;
         const py = valToY(midScore) - pillH / 2;
         drawPill(px, py, '待评', true);

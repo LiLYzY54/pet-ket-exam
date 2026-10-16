@@ -6,8 +6,8 @@ const PAPERS_CATALOG = {
       label: '试卷 1',
       sourceLabel: 'Test1 · 官方样题',
       objCount: 57,
-      durationDesc: '约 137 分钟',
-      description: '听力 25 题 · 阅读 32 题 · 写作与口语',
+      durationDesc: '约 120 分钟',
+      description: '听力 25 题 · 阅读 32 题 · 写作 2 题',
       title: 'Preliminary English Test for Schools · Sample'
     },
     {
@@ -15,8 +15,8 @@ const PAPERS_CATALOG = {
       label: '试卷 2',
       sourceLabel: 'Test2 · 官方模考',
       objCount: 57,
-      durationDesc: '约 137 分钟',
-      description: '听力 25 题 · 阅读 32 题 · 写作与口语',
+      durationDesc: '约 125 分钟',
+      description: '听力 25 题 · 阅读 32 题 · 写作 2 题',
       title: 'Preliminary English Test for Schools · Test 2'
     }
   ],
@@ -26,8 +26,8 @@ const PAPERS_CATALOG = {
       label: '试卷 1',
       sourceLabel: 'Test1 · 官方样题',
       objCount: 55,
-      durationDesc: '约 102 分钟',
-      description: '听力 25 题 · 阅读 30 题 · 读写 P6-7 · 口语',
+      durationDesc: '约 90 分钟',
+      description: '听力 25 题 · 阅读 30 题 · 写作 2 题',
       title: 'A2 Key for Schools · Sample'
     },
     {
@@ -35,8 +35,8 @@ const PAPERS_CATALOG = {
       label: '试卷 2',
       sourceLabel: 'Test2 · 2024第006套',
       objCount: 55,
-      durationDesc: '约 102 分钟',
-      description: '听力 25 题 · 阅读 30 题 · 读写 P6-7 · 口语',
+      durationDesc: '约 90 分钟',
+      description: '听力 25 题 · 阅读 30 题 · 写作 2 题',
       title: 'A2 Key for Schools · Test 2 (2024第006套)'
     }
   ]

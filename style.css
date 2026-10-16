@@ -473,6 +473,22 @@ textarea{min-height:160px;resize:vertical;line-height:1.55}
 .offline-notice p,.offline-complete p{margin:4px 0 0;font-size:.8125rem;line-height:1.55;color:var(--color-muted-fg)}
 .offline-task{background:#fff;border-color:#CBD5E1}
 .offline-task .q-stem{max-width:76ch}
+.offline-task-writing{
+  border:none !important;background:transparent !important;
+  box-shadow:none !important;padding:0 !important;margin:24px 0 !important;
+}
+.offline-task-writing .q-num,
+.offline-task-writing .quiet,
+.offline-task-writing .offline-badge{
+  display:none !important;
+}
+.offline-task-writing .q-stem{
+  font-size:1.15rem;font-weight:700;line-height:1.5;
+  color:var(--color-foreground);margin:0 0 14px;max-width:none;
+}
+.offline-task-writing .q-image{
+  border:none;background:transparent;padding:0;box-shadow:none;max-width:100%;margin:10px 0 20px;
+}
 .offline-badge{
   flex:0 0 auto;padding:4px 9px;border-radius:999px;background:#E0F2FE;color:#075985;
   font-size:.6875rem;font-weight:750;letter-spacing:.02em;
